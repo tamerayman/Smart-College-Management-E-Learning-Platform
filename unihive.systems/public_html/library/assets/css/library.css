@@ -1,0 +1,499 @@
+body{
+  height:fit-content;
+  color: white;
+  background-color: #f5f5f5;
+
+    width: auto;
+    transition: 0.3s ease;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+  }
+  header button {
+  
+  
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 40px;
+        background:none ;
+        color: white;
+      
+      transition: 0.5s;
+    }
+  .mean{
+    display: none;
+    position: absolute; 
+    top: 80px; 
+    left: 20px; 
+    z-index: 1000;
+  background: rgb(255, 255, 255);
+  width: 170px;
+  height: 420px;
+  border: 3px #4434f3 solid;
+  border-radius: 12px;
+  margin-left: 8%;
+  box-shadow: 0px 0px 10px  rgba(43, 43, 43, 0.687);
+  /* opacity: 0; */
+  
+  }
+  .mean.active {
+    display: block; 
+  }
+  
+  ul{
+      list-style: none;
+      position: relative;
+      left: -28px;
+      top: -8px;
+  
+      }
+  
+   ul li a{
+  
+      height: 40px;
+  width: 110%;
+   background-color: #103054;
+  text-decoration: none;
+   margin:7px 0px;
+   border-radius: 15px;
+   border: 2px solid #4434f3; 
+  
+  display:flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  gap: 25px;
+  transition: 0.5s;
+  
+              }
+   ul li a i{
+  color: aliceblue;
+  font-size: 18px;
+  margin: 12px 0px 10px 15px;
+  transition: 0.5s;
+           } 
+  ul li a p{
+  align-items: center;
+  padding: 0 10px;  
+  color: aliceblue;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  transition: 0.5s;
+          }
+        
+  
+          ul li a:hover {
+        background: #103054c7;
+        }
+    
+  
+          ul li a.active {
+            border: 2px solid #f3b034; 
+            background: white;
+        }
+        
+        ul li a.active i {
+            color: #f3b034; 
+        }
+        
+        ul li a.active p {
+            color: #f3b034; 
+        }
+        
+  
+
+
+
+
+
+
+a{
+  text-decoration:none;
+  color: white;
+}
+
+header{
+  padding-top: 5px;
+  height: 60px;
+  padding: 0 40px;
+  z-index: 2200;
+  background-color: #103054;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: fixed;
+  width: 94%;
+}
+header span{
+  color:#3152e7;
+}
+
+
+.icons{
+  width: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bxs-user-circle{
+  font-size: 40px;
+}
+.icons .bxs-bell{
+  font-size: 25px;
+}
+
+header img{
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  margin-right: 8px;
+}
+#sec1{
+  height: 205px;
+  background: linear-gradient(#000,#103054);
+  padding-top: 100px;
+  position: fixed;
+  width: 100%;
+  z-index: 300;
+}
+#searchContainer{
+  margin: auto;
+  width: 60%;
+  height: 55px;
+  border-radius: 50px;
+  margin-top: 30px;
+  color: white;
+  background-color: #f5c254;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 0px 3px #f1f1f1;
+}
+#searchContainer input{
+  width: 80%;
+  height: 80%;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  padding-left: 40px;
+  margin-right: 6px;
+}
+#searchContainer i{
+  margin: auto;
+  color: #103054;
+}
+#searchContainer .bx-search{
+  font-size: 30px;
+  font-weight: 800;
+}
+
+
+.levelsContainer{
+  display: none; /* Hide the entire container if you can't remove it */
+}
+
+.bookContainer {
+  /* Keep existing styles but no level-specific class */
+  display: block; /* Make sure all books are visible by default */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.bookContainer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*books*/
+#noResults{
+  margin: auto;
+  font-style: 39px;
+  font-weight: bolder;
+  color: #103054;
+}
+.courses{
+  width: 94%;
+  margin: 50px auto;
+  background:green;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px 0;
+  background-color: #f0efef;
+  border-radius: 20px;
+  min-height: 400px;
+}
+.courses h2{
+  color: #001D3D;
+}
+.sec2{
+  height:fit-content;
+  min-height: 400px;
+  padding-top: 315px;
+}
+.bookContainer{
+  background-color:#fcf9f9;
+  width: 21%;
+  height: 200px;
+  border-radius:15px;
+  margin: 20px;
+  z-index: 200;
+  text-align: center;
+  box-shadow: 0px 4px 15px 0px #0000004d;
+  position: relative;
+
+  overflow: hidden;
+}
+
+.bookContainer img{
+  width: 100%;
+  height: 100%;
+  border-radius: 15px  ;
+
+  transition: filter 0.3s ease, transform 0.3s ease;
+  display: block;
+}
+.courseName{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  border-radius: 15px;
+  
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.bookContainer:hover .courseName{
+  opacity: 1;
+  cursor: pointer;
+}
+.bookContainer:hover img {
+  filter: blur(6px);
+  transform: scale(1.05);
+}
+
+.bookContainer p{
+  margin-bottom: 20px;
+  margin-top: 5px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: 0px 3px 3px #164479;
+  text-transform: uppercase;
+}
+
+/*animated cards*/
+.animate-item {
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+}
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.animate-item.visible {
+  animation: popIn 0.7s ease-out forwards;
+}
+
+
+
+/*footer*/
+footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  height: 80px;
+  padding: 0 50px;
+  color: #ffffff9c;
+  background-color:#001D3D;
+}
+
+footer p{
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: line-through;
+}
+
+.footerIcons{
+  display: flex;
+  justify-content: space-between;
+  width: 12%;
+}
+.footerIcons i{
+  color: #ffffff9c;
+  font-size: 32px;
+
+  transition: .5s ease;
+}
+
+.footerIcons i:hover{
+  color: white;
+  transform: scale(1.1);
+}
+
+
+
+
+/*smaller screens*/
+
+@media ((max-width:1200px)) {
+  .bookContainer{
+    width: 28%;
+  }
+  header img{
+    margin-right: 4px;
+  }
+  #searchContainer{
+    height: 39px;
+  }
+  .bx-search{
+    padding: 0 2px 0 4px;
+    font-size: 11px;
+  }
+
+  .levelsContainer button{
+    padding: 10px 30px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+  .icons{
+    margin-right: 60px;
+  }
+  .icons .bxs-bell{
+    margin-right: 12px;
+  }
+  
+  .footerIcons{
+    width: 20%;
+  }
+  .footerIcons i{
+    font-size: 27px;
+  }
+  footer p{
+    font-size: 18px;
+    padding-bottom: 10px;
+  }
+  footer{
+    padding: 0 40px;
+  }
+  .footerIcons i{
+    font-size: 30px;
+  }
+  footer p{
+    font-size: 22px;
+  }
+}
+
+
+
+@media ((max-width:900px)) {
+  .bookContainer{
+    width: 40%;
+  }
+    header img{
+      margin-right: 4px;
+    }
+    #searchContainer{
+      height: 37px;
+      border-radius: 10px;
+    }
+    .bx-search{
+      padding: 0 2px 0 4px;
+      font-size: 11px;
+    }
+  
+    .levelsContainer button{
+      padding: 8px 20px;
+      font-size: 14px;
+      border-radius: 8px;
+    }
+    .icons{
+      margin-right: 60px;
+    }
+    .icons .bxs-bell{
+      margin-right: 12px;
+    }
+    .footerIcons{
+      width: 18%;
+    }
+    .footerIcons i{
+      font-size: 25px;
+    }
+    footer p{
+      font-size: 20px;
+    }
+    footer{
+      padding: 0 30px;
+    }
+}
+
+
+
+@media ((max-width:650px)) {
+
+  header img{
+    margin-right: 2px;
+  }
+  #searchContainer{
+    height: 35px;
+    border-radius: 10px;
+  }
+  .bx-search{
+    padding-left: 3px;
+    font-size: 10px;
+  }
+  .courses{
+    background-color: white;
+  }
+  .bookContainer{
+    width: 65%;
+  }
+
+  .levelsContainer button{
+    padding: 6px 13px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+  .icons{
+    margin-right: 70px;
+  }
+  .icons .bxs-bell{
+    margin-right: 8px;
+  }
+  .footerIcons{
+    width: 20%;
+  }
+  .footerIcons i{
+    font-size: 22px;
+  }
+  footer p{
+    font-size: 18px;
+    padding-bottom: 10px;
+  }
+  footer{
+    padding: 0 30px;
+  }
+}
+
+

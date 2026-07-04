@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Difficult Quiz</title>
+</head>
+<body>
+    
+<div class="navbar">
+    <div class="navbar-left">
+       <div class="logo">
+            <img style=" width: 55px; height: 55px;" src="logo.png" alt="logo-img" class="img-fluid">
+       </div>
+       <i class="bx bx-menu menu-icon" onclick="toggleMenu()"></i>
+   </div>
+    <div class="profile">
+        <div class="notification">
+          <a href="" ><i style=" font-size: xx-large; color: #ffffff;" class='bx bxs-bell'></i></a>
+          <span class="badge">3</span>
+        </div>
+        <a href="" ><i class='bx bxs-user-circle'></i></a>
+    </div>
+    <div class="sidebar" id="sidebar">
+       <ul id="mean" class="mean" >
+          <li><a href="#"><i class='bx bxs-dashboard'></i><p>Dashbord</p></a></li>
+          <li><a href="#"><i class='bx bx-library'></i><p>Library</p></a></li>   
+          <li><a href="file:///C:/Users/%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84/Downloads/quiz/all/index2.html"><i class='bx bx-question-mark'></i>   <p>Quizzes</p> </a>       </li>   
+          <li><a href="#"><i class='bx bxs-videos' ></i><p>Courses</p>  </a></li>   
+          <li><a href="#"><i class='bx bxs-file-blank'></i><p>Sheets</p></a></li>   
+          <li><a href="#"><i class='bx bxs-video'></i><p>Meeting</p></a></li>   
+          <li><a href="#"><i class='bx bxs-message-rounded-dots' ></i><p>Chat</p></a></li>   
+          <li><a href="#"><i class='bx bxs-calendar'></i><p >Calender</p></a></li>   
+      </ul>
+    </div>               
+</div>
+ <!-- search -->
+  <center>
+    <div class="search-container">
+       <i class="bx bx-search-alt search-icon" onclick="triggerSearch()"></i>
+       <input type="text" class="search-bar" id="searchInput" >
+    </div>
+ <!-- search end -->
+ </center>
+<!--banner-start-->
+<section class="banner-main-con about-page-main-banner-con">
+<div class="container">
+   <div class="banner-con about-page-banner-con text-center">
+      <div class="row wow slideInLeft">
+         <div class="col-lg-12">
+            <div class="about-page-banner-title">
+               <h1> Python Quiz </h1>
+               <h2>Python Hard Level Test</h2>
+               <h4 class="mb-0">You can now challenge yourself with a set of questions that have been professionally prepared specifically<br>
+                for you so that you can measure your level in the Python language.</h4>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</section>
+  
+  <!-- زر البدء -->
+
+  <button id="startBtn" onclick="startQuiz()">Start Quiz</button>
+   
+  <!-- الكويز -->
+  <div class="quiz-container" id="quiz">
+    <div id="question" class="question"></div>
+    <div id="options" class="options"></div>
+    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+  </div>
+
+  <!-- النتيجة -->
+  <div class="result" id="result">
+    <h3> Quiz Result</h3>
+    <div class="score-text" id="scoreText"></div>
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="feedback" id="feedback"></div>
+  </div>
+  <by><br><br><br>
+  <script>
+    const questions = [
+  {
+    q: "What is the result of: [[0]*3]*3, if you modify one inner list?",
+    options: ["Only that list changes", "All inner lists change", "Error occurs"],
+    answer: "All inner lists change"
+  },
+  {
+    q: "What is the difference between 'is' and '==' in Python?",
+    options: ["No difference", "'is' checks identity, '==' checks equality", "They are interchangeable"],
+    answer: "'is' checks identity, '==' checks equality"
+  },
+  {
+    q: "What will be the output of: {1, 2, 3} & {2, 3, 4}?",
+    options: ["{1, 4}", "{2, 3}", "{1, 2, 3, 4}"],
+    answer: "{2, 3}"
+  },
+  {
+    q: "What does the '@staticmethod' decorator do?",
+    options: [
+      "Makes a method a static method",
+      "Makes a method private",
+      "Allows method to access class variables"
+    ],
+    answer: "Makes a method a static method"
+  },
+  {
+    q: "What is the output of: list(map(lambda x: x**2, [1,2,3]))?",
+    options: ["[2,4,6]", "[1,4,9]", "[1,2,3]"],
+    answer: "[1,4,9]"
+  },
+  {
+    q: "What does the 'with' statement manage in Python?",
+    options: ["Loops", "Exception handling", "Context (like file handling)"],
+    answer: "Context (like file handling)"
+  },
+  {
+    q: "What is the time complexity of searching in a Python set?",
+    options: ["O(n)", "O(log n)", "O(1)"],
+    answer: "O(1)"
+  },
+  {
+    q: "What is the output of: (lambda x: x*2)(5)?",
+    options: ["10", "25", "5*2"],
+    answer: "10"
+  },
+  {
+    q: "How do you create an iterator from a list?",
+    options: ["iter(list)", "list()", "next(list)"],
+    answer: "iter(list)"
+  },
+  {
+    q: "What is the purpose of init.py file in a Python package?",
+    options: [
+      "It defines the version",
+      "It initializes the interpreter",
+      "It marks a directory as a package"
+    ],
+    answer: "It marks a directory as a package"
+  }
+];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function startQuiz() {
+      const startBtn = document.getElementById("startBtn");
+      const quizBox = document.getElementById("quiz");
+
+      // خروج سلس
+      startBtn.classList.add("fadeOut");
+
+      setTimeout(() => {
+        startBtn.style.display = "none";
+        quizBox.style.display = "block";
+        quizBox.classList.add("fadeInZoom");
+        loadQuestion();
+      }, 500);
+    }
+
+
+    function loadQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById("question").innerHTML = `${currentQuestion + 1}: ${q.q}`;
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+      document.getElementById("nextBtn").style.display = "none";
+
+      q.options.forEach((opt, index) => {
+        const btn = document.createElement("button");
+        const spanText = document.createElement("span");
+        const spanIcon = document.createElement("span");
+
+        spanText.innerHTML = opt;
+        spanIcon.className = "icon";
+        spanIcon.textContent = "✔";
+
+        btn.appendChild(spanText);
+        btn.appendChild(spanIcon);
+        btn.onclick = () => checkAnswer(index);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selectedIndex) {
+      const q = questions[currentQuestion];
+      const buttons = document.querySelectorAll("#options button");
+
+      buttons.forEach((btn, i) => {
+        btn.classList.add("disabled");
+        const icon = btn.querySelector(".icon");
+
+        if (i === q.answer) {
+          btn.classList.add("correct");
+          icon.textContent = "✔";
+        }
+
+        if (i === selectedIndex && i !== q.answer) {
+          btn.classList.add("wrong");
+          icon.textContent = "✖";
+        }
+      });
+
+      if (selectedIndex === q.answer) score++;
+
+      if (currentQuestion < questions.length - 1) {
+        document.getElementById("nextBtn").style.display = "inline-block";
+      } else {
+        setTimeout(showFinalResult, 1000);
+      }
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      loadQuestion();
+    }
+
+    function showFinalResult() {
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("result").style.display = "block";
+
+      const percent = Math.round((score / questions.length) * 100);
+      document.getElementById("scoreText").innerText = `You scored ${score} out of ${questions.length} (${percent}%)`;
+      document.getElementById("progressBar").style.width = percent + "%";
+
+      let feedback = "";
+      if (percent === 100) feedback = " Perfect! You're an HTML master!";
+      else if (percent >= 80) feedback = " Great job! You know your stuff.";
+      else if (percent >= 50) feedback = " Not bad, keep practicing!";
+      else feedback = " Needs more study. Try again!";
+      document.getElementById("feedback").innerText = feedback;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

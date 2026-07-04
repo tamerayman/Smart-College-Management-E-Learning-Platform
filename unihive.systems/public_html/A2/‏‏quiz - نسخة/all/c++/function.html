@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>functions Quiz</title>
+</head>
+<body>
+<div class="navbar">
+    <div class="navbar-left">
+       <div class="logo">
+            <img style=" width: 55px; height: 55px;" src="logo.png" alt="logo-img" class="img-fluid">
+       </div>
+       <i class="bx bx-menu menu-icon" onclick="toggleMenu()"></i>
+   </div>
+    <div class="profile">
+        <div class="notification">
+          <a href="" ><i style=" font-size: xx-large; color: #ffffff;" class='bx bxs-bell'></i></a>
+          <span class="badge">3</span>
+        </div>
+        <a href="" ><i class='bx bxs-user-circle'></i></a>
+    </div>
+    <div class="sidebar" id="sidebar">
+       <ul id="mean" class="mean" >
+          <li><a href="#"><i class='bx bxs-dashboard'></i><p>Dashbord</p></a></li>
+          <li><a href="#"><i class='bx bx-library'></i><p>Library</p></a></li>   
+          <li><a href="file:///C:/Users/%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84/Downloads/quiz/all/index2.html"><i class='bx bx-question-mark'></i>   <p>Quizzes</p> </a>       </li>   
+          <li><a href="#"><i class='bx bxs-videos' ></i><p>Courses</p>  </a></li>   
+          <li><a href="#"><i class='bx bxs-file-blank'></i><p>Sheets</p></a></li>   
+          <li><a href="#"><i class='bx bxs-video'></i><p>Meeting</p></a></li>   
+          <li><a href="#"><i class='bx bxs-message-rounded-dots' ></i><p>Chat</p></a></li>   
+          <li><a href="#"><i class='bx bxs-calendar'></i><p >Calender</p></a></li>   
+      </ul>
+    </div>               
+</div>
+ <!-- search -->
+  <center>
+    <div class="search-container">
+       <i class="bx bx-search-alt search-icon" onclick="triggerSearch()"></i>
+       <input type="text" class="search-bar" id="searchInput" >
+    </div>
+ <!-- search end -->
+ </center>
+<!--banner-start-->
+<section class="banner-main-con about-page-main-banner-con">
+<div class="container">
+   <div class="banner-con about-page-banner-con text-center">
+      <div class="row wow slideInLeft">
+         <div class="col-lg-12">
+            <div class="about-page-banner-title">
+               <h1> C++ Quiz </h1>
+               <h2>C++ language test in functions</h2>
+               <h4 class="mb-0">c++In this section there is a C++ language test in the basics. If you have studied the basics of 
+                you can now start testing yourself in the basics and your understanding of them.</h4>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</section>
+  
+  <!-- زر البدء -->
+
+  <button id="startBtn" onclick="startQuiz()">Start Quiz</button>
+   
+  <!-- الكويز -->
+  <div class="quiz-container" id="quiz">
+    <div id="question" class="question"></div>
+    <div id="options" class="options"></div>
+    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+  </div>
+
+  <!-- النتيجة -->
+  <div class="result" id="result">
+    <h3> Quiz Result</h3>
+    <div class="score-text" id="scoreText"></div>
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="feedback" id="feedback"></div>
+  </div>
+  <by><br><br><br>
+  <script>
+    const questions = [
+  { q: "What is a function in C++?", options: [
+    "A block of code that performs a task",
+    "A comment",
+    "A header file",
+    "A class"
+  ], answer: 0 },
+
+  { q: "Which keyword is used to define a function?", options: [
+    "function", "def", "void", "None of the above"
+  ], answer: 2 },
+
+  { q: "What is the default return type of a function if not specified?", options: [
+    "void", "int", "float", "None"
+  ], answer: 1 },
+
+  { q: "Which function is the entry point of every C++ program?", options: [
+    "start()", "begin()", "init()", "main()"
+  ], answer: 3 },
+
+  { q: "Which of the following is a valid function declaration?", options: [
+    "int function()", "function int()", "def function()", "None of these"
+  ], answer: 0 },
+
+  { q: "Which function specifier prevents a function from being overridden?", options: [
+    "sealed", "override", "final", "static"
+  ], answer: 2 },
+
+  { q: "What does 'void' mean in function declaration?", options: [
+    "Returns nothing", "Returns 0", "Returns address", "Is private"
+  ], answer: 0 },
+
+  { q: "Which of these allows a function to call itself?", options: [
+    "Looping", "Recursion", "Inheritance", "Overloading"
+  ], answer: 1 },
+
+  { q: "How many return statements can a function have?", options: [
+    "Only one", "One or more", "Unlimited", "None"
+  ], answer: 2 },
+
+  { q: "What is function overloading?", options: [
+    "Using same function name with different parameters", "Two functions in one", "Using different return types", "None"
+  ], answer: 0 },
+
+  { q: "Which type of argument is passed to a function?", options: [
+    "Value", "Reference", "Pointer", "All of the above"
+  ], answer: 3 },
+
+  { q: "Which keyword is used to return a value from a function?", options: [
+    "exit", "output", "return", "send"
+  ], answer: 2 },
+
+  { q: "Which of the following is true about parameters?", options: [
+    "They are passed before function is defined", "They are passed inside return", "They go in parentheses", "None"
+  ], answer: 2 },
+
+  { q: "What is the scope of a local variable in a function?", options: [
+    "Global", "Within the function", "After the function", "Everywhere"
+  ], answer: 1 },
+
+  { q: "What is a function prototype?", options: [
+    "A function call", "A function definition", "A declaration of function before main", "None"
+  ], answer: 2 },
+
+  { q: "Can you have default arguments in C++ functions?", options: [
+    "Yes", "No", "Only in classes", "Only in constructors"
+  ], answer: 0 },
+
+  { q: "Can a function return multiple values in C++?", options: [
+    "Yes", "No", "Only with arrays", "Only with pointers"
+  ], answer: 0 },
+
+  { q: "Which header is typically required for built-in functions like sqrt()?", options: [
+    "<iostream>", "<math.h>", "<stdlib.h>", "<stdio.h>"
+  ], answer: 1 },
+
+  { q: "What happens if no return value is specified in non-void function?", options: [
+    "Compilation error", "Returns 0", "Undefined behavior", "Program crashes"
+  ], answer: 0 },
+
+  { q: "What is inline function in C++?", options: [
+    "A function written in a single line", "A function defined in main()", "A function where code is inserted at call", "None"
+  ], answer: 2 }
+];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function startQuiz() {
+      const startBtn = document.getElementById("startBtn");
+      const quizBox = document.getElementById("quiz");
+
+      // خروج سلس
+      startBtn.classList.add("fadeOut");
+
+      setTimeout(() => {
+        startBtn.style.display = "none";
+        quizBox.style.display = "block";
+        quizBox.classList.add("fadeInZoom");
+        loadQuestion();
+      }, 500);
+    }
+
+
+    function loadQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById("question").innerHTML = `${currentQuestion + 1}: ${q.q}`;
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+      document.getElementById("nextBtn").style.display = "none";
+
+      q.options.forEach((opt, index) => {
+        const btn = document.createElement("button");
+        const spanText = document.createElement("span");
+        const spanIcon = document.createElement("span");
+
+        spanText.innerHTML = opt;
+        spanIcon.className = "icon";
+        spanIcon.textContent = "✔";
+
+        btn.appendChild(spanText);
+        btn.appendChild(spanIcon);
+        btn.onclick = () => checkAnswer(index);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selectedIndex) {
+      const q = questions[currentQuestion];
+      const buttons = document.querySelectorAll("#options button");
+
+      buttons.forEach((btn, i) => {
+        btn.classList.add("disabled");
+        const icon = btn.querySelector(".icon");
+
+        if (i === q.answer) {
+          btn.classList.add("correct");
+          icon.textContent = "✔";
+        }
+
+        if (i === selectedIndex && i !== q.answer) {
+          btn.classList.add("wrong");
+          icon.textContent = "✖";
+        }
+      });
+
+      if (selectedIndex === q.answer) score++;
+
+      if (currentQuestion < questions.length - 1) {
+        document.getElementById("nextBtn").style.display = "inline-block";
+      } else {
+        setTimeout(showFinalResult, 1000);
+      }
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      loadQuestion();
+    }
+
+    function showFinalResult() {
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("result").style.display = "block";
+
+      const percent = Math.round((score / questions.length) * 100);
+      document.getElementById("scoreText").innerText = `You scored ${score} out of ${questions.length} (${percent}%)`;
+      document.getElementById("progressBar").style.width = percent + "%";
+
+      let feedback = "";
+      if (percent === 100) feedback = " Perfect! You're an HTML master!";
+      else if (percent >= 80) feedback = " Great job! You know your stuff.";
+      else if (percent >= 50) feedback = " Not bad, keep practicing!";
+      else feedback = " Needs more study. Try again!";
+      document.getElementById("feedback").innerText = feedback;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

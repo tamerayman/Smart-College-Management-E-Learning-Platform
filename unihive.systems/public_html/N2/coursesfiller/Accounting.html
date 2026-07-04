@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNIHIVE</title>
+  
+  <link rel="stylesheet" href="coursesFiller.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+  <style>
+    .professor-upload {
+      margin-top: 20px;
+    }
+    .professor-upload button {
+      background-color: #38618a;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 15px;
+      font-size: 16px;
+      margin-right: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .professor-upload button:hover {
+      background-color: #4c749c;
+      transform: scale(1.05);
+    }
+    .professor-upload i {
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <div style="display: flex; align-items: center;">
+      <a href="../../home/home.php"><img src="../logo_white.png" alt=""></a>
+      <button id="menu-toggle">
+        <i class='bx bx-menu'></i>
+      </button>
+    </div>
+
+    
+  <div id="mean" class="mean" >
+      <ul>
+      <li><a href="../../home/home.php">  <i class='bx bxs-dashboard'></i>       <p>Dashbord</p> </a>       </li>
+      <li><a href="../../library/library.php">    <i class='bx bx-library'></i>    <p>Library</p> </a>       </li>   
+      <li><a href="../../A2/‏‏quiz - نسخة/all/index2.html">  <i class='bx bx-question-mark'></i>   <p>Quizzes</p> </a>       </li>   
+      <li><a href="../../R2/unihive course/course.html">    <i class='bx bxs-videos' ></i>        <p>Courses</p>  </a>       </li>   
+      <li><a href="#">  <i class='bx bxs-file-blank'></i>    <p>Sheets</p>   </a>       </li>   
+      <li><a href="../../meetings/meetings.php">     <i class='bx bxs-video'></i>      <p>Meeting</p>    </a>       </li>   
+      <li><a href="#">    <i class='bx bxs-message-rounded-dots' ></i>      <p>Chat</p>   </a>       </li>   
+      <li><a href="#">    <i class='bx bxs-calendar'></i>  <p >Calender</p>    </a>     </li>   
+
+  </ul>
+    </div>
+    <div class="icons">
+      <a href=""><i class="bx bxs-bell"></i></a>
+      <a href="../../R2/unihive profile/profile.php"><i class="bx bxs-user-circle"></i></a>
+    </div>
+    
+  </header>
+  
+  <main>
+    <section>
+      <img src="../../photo/Library/accounting.png" alt="">
+    </section>
+
+    <section class="container">
+      <div class="description">
+        <h1>Accounting</h1>
+        <span>Description:<br></span>
+        <p>
+          "Accounting is the process of recording, summarizing, and analyzing financial transactions to help individuals and organizations make informed financial decisions. It is often referred to as the language of business."
+        </p>
+      </div>
+
+      <div class="btnsContainer">
+        <a href="../../library/view_demo.php?course=accounting&type=read" target="_blank">
+          <button>Read  <i class="bx bxs-file-pdf"></i></button>
+        </a>
+        <a href="../../library/view_demo.php?course=accounting&type=download">
+          <button>Download  <i class="bx bxs-cloud-download"></i></button>
+        </a>
+        
+        <!-- Professor upload buttons - will be shown/hidden via PHP in dynamic version -->
+        <div class="professor-upload" id="professorUpload" style="display:none;">
+          <a href="../../library/upload.php?course=accounting">
+            <button>Upload Book <i class="bx bx-book-add"></i></button>
+          </a>
+          <a href="../../library/upload_exam.php?course=accounting">
+            <button>Upload Exam <i class="bx bx-file-plus"></i></button>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+
+  <footer>
+    <p>www.unihive.com</p>
+    <div class="footerIcons">
+      <a href="#"><i class="bx bxs-phone"></i></a>
+      <a href="#"><i class="bx bxl-facebook"></i></a>
+      <a href="#"><i class="bx bx-globe"></i></a>
+    </div>
+  </footer>
+
+
+
+
+
+
+  <script src="list.js"></script>
+  <script>
+    // This would be replaced with PHP in dynamic version
+    // For demo purposes we'll check URL parameter
+    function checkIfProfessor() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('role') === 'professor') {
+        document.getElementById('professorUpload').style.display = 'block';
+      }
+    }
+    window.onload = checkIfProfessor;
+  </script>
+</body>
+</html>

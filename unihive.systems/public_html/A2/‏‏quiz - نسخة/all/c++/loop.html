@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>loop Quiz</title>
+  </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="navbar-left">
+       <div class="logo">
+            <img style=" width: 55px; height: 55px;" src="logo.png" alt="logo-img" class="img-fluid">
+       </div>
+       <i class="bx bx-menu menu-icon" onclick="toggleMenu()"></i>
+   </div>
+    <div class="profile">
+        <div class="notification">
+          <a href="" ><i style=" font-size: xx-large; color: #ffffff;" class='bx bxs-bell'></i></a>
+          <span class="badge">3</span>
+        </div>
+        <a href="" ><i class='bx bxs-user-circle'></i></a>
+    </div>
+    <div class="sidebar" id="sidebar">
+       <ul id="mean" class="mean" >
+          <li><a href="#"><i class='bx bxs-dashboard'></i><p>Dashbord</p></a></li>
+          <li><a href="#"><i class='bx bx-library'></i><p>Library</p></a></li>   
+          <li><a href="file:///C:/Users/%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84/Downloads/quiz/all/index2.html"><i class='bx bx-question-mark'></i>   <p>Quizzes</p> </a>       </li>   
+          <li><a href="#"><i class='bx bxs-videos' ></i><p>Courses</p>  </a></li>   
+          <li><a href="#"><i class='bx bxs-file-blank'></i><p>Sheets</p></a></li>   
+          <li><a href="#"><i class='bx bxs-video'></i><p>Meeting</p></a></li>   
+          <li><a href="#"><i class='bx bxs-message-rounded-dots' ></i><p>Chat</p></a></li>   
+          <li><a href="#"><i class='bx bxs-calendar'></i><p >Calender</p></a></li>   
+      </ul>
+    </div>               
+</div>
+ <!-- search -->
+  <center>
+    <div class="search-container">
+       <i class="bx bx-search-alt search-icon" onclick="triggerSearch()"></i>
+       <input type="text" class="search-bar" id="searchInput" >
+    </div>
+ <!-- search end -->
+ </center>
+<!--banner-start-->
+<section class="banner-main-con about-page-main-banner-con">
+<div class="container">
+   <div class="banner-con about-page-banner-con text-center">
+      <div class="row wow slideInLeft">
+         <div class="col-lg-12">
+            <div class="about-page-banner-title">
+               <h1> C++ Quiz </h1>
+               <h2>C++ has been tested in loops</h2>
+               <h4 class="mb-0">c++In this section there is a C++ language test in the basics. If you have studied the basics of 
+                you can now start testing yourself in the basics and your understanding of them.</h4>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</section>
+  
+  <!-- زر البدء -->
+
+  <button id="startBtn" onclick="startQuiz()">Start Quiz</button>
+   
+  <!-- الكويز -->
+  <div class="quiz-container" id="quiz">
+    <div id="question" class="question"></div>
+    <div id="options" class="options"></div>
+    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+  </div>
+
+  <!-- النتيجة -->
+  <div class="result" id="result">
+    <h3> Quiz Result</h3>
+    <div class="score-text" id="scoreText"></div>
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="feedback" id="feedback"></div>
+  </div>
+  <by><br><br><br>
+  <script>
+   const questions = [
+  { q: "Which of the following is a loop structure in C++?", options: ["if", "for", "switch", "goto"], answer: 1 },
+  { q: "How many types of loops are there in C++?", options: ["2", "3", "4", "5"], answer: 1 },
+  { q: "What is the syntax of a for loop?", options: ["for (init; condition; update)", "for (condition; init; update)", "for (update; init; condition)", "for (init, condition, update)"], answer: 0 },
+  { q: "What is the initial value in this loop: for (int i = 0; i < 5; i++)?", options: ["5", "0", "1", "undefined"], answer: 1 },
+  { q: "Which loop is guaranteed to execute at least once?", options: ["for", "while", "do-while", "none"], answer: 2 },
+  { q: "Which keyword is used to stop a loop?", options: ["exit", "stop", "break", "terminate"], answer: 2 },
+  { q: "Which keyword skips the current iteration of a loop?", options: ["skip", "next", "continue", "pass"], answer: 2 },
+  { q: "What is the output of: for(int i=0; i<3; i++) cout<<i;", options: ["0 1 2", "1 2 3", "0 1 2 3", "1 2"], answer: 0 },
+  { q: "What is the output of: int i=0; while(i<2){ cout<<i; i++; }", options: ["0 1", "1 2", "0 1 2", "infinite loop"], answer: 0 },
+  { q: "What is the minimum number of times a 'while' loop can run?", options: ["1", "0", "Infinite", "2"], answer: 1 },
+  { q: "What is the maximum number of times a 'for' loop can run?", options: ["Infinite", "Depends on condition", "100", "10"], answer: 1 },
+  { q: "Which of these is a valid loop declaration?", options: ["loop(i < 10)", "while i < 10", "while(i < 10)", "do i < 10"], answer: 2 },
+  { q: "Can loops be nested in C++?", options: ["Yes", "No", "Only for loops", "Only while loops"], answer: 0 },
+  { q: "What is the result of: for(int i=1; i<=5; i++) { if(i==3) break; cout<<i; }", options: ["1 2", "1 2 3", "1 2 3 4", "1 2 3 4 5"], answer: 0 },
+  { q: "How many times will this run: for(int i=5; i>0; i--)", options: ["0", "5", "4", "6"], answer: 1 },
+  { q: "Which is better for known number of iterations?", options: ["while", "do-while", "for", "switch"], answer: 2 },
+  { q: "Which loop is ideal when you don’t know how many times it should run?", options: ["for", "while", "do", "static"], answer: 1 },
+  { q: "What is the output: int i=3; do{ cout<<i; }while(i<3);", options: ["0", "3", "nothing", "infinite"], answer: 1 }
+];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function startQuiz() {
+      const startBtn = document.getElementById("startBtn");
+      const quizBox = document.getElementById("quiz");
+
+      // خروج سلس
+      startBtn.classList.add("fadeOut");
+
+      setTimeout(() => {
+        startBtn.style.display = "none";
+        quizBox.style.display = "block";
+        quizBox.classList.add("fadeInZoom");
+        loadQuestion();
+      }, 500);
+    }
+
+
+    function loadQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById("question").innerHTML = `${currentQuestion + 1}: ${q.q}`;
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+      document.getElementById("nextBtn").style.display = "none";
+
+      q.options.forEach((opt, index) => {
+        const btn = document.createElement("button");
+        const spanText = document.createElement("span");
+        const spanIcon = document.createElement("span");
+
+        spanText.innerHTML = opt;
+        spanIcon.className = "icon";
+        spanIcon.textContent = "✔";
+
+        btn.appendChild(spanText);
+        btn.appendChild(spanIcon);
+        btn.onclick = () => checkAnswer(index);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selectedIndex) {
+      const q = questions[currentQuestion];
+      const buttons = document.querySelectorAll("#options button");
+
+      buttons.forEach((btn, i) => {
+        btn.classList.add("disabled");
+        const icon = btn.querySelector(".icon");
+
+        if (i === q.answer) {
+          btn.classList.add("correct");
+          icon.textContent = "✔";
+        }
+
+        if (i === selectedIndex && i !== q.answer) {
+          btn.classList.add("wrong");
+          icon.textContent = "✖";
+        }
+      });
+
+      if (selectedIndex === q.answer) score++;
+
+      if (currentQuestion < questions.length - 1) {
+        document.getElementById("nextBtn").style.display = "inline-block";
+      } else {
+        setTimeout(showFinalResult, 1000);
+      }
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      loadQuestion();
+    }
+
+    function showFinalResult() {
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("result").style.display = "block";
+
+      const percent = Math.round((score / questions.length) * 100);
+      document.getElementById("scoreText").innerText = `You scored ${score} out of ${questions.length} (${percent}%)`;
+      document.getElementById("progressBar").style.width = percent + "%";
+
+      let feedback = "";
+      if (percent === 100) feedback = " Perfect! You're an HTML master!";
+      else if (percent >= 80) feedback = " Great job! You know your stuff.";
+      else if (percent >= 50) feedback = " Not bad, keep practicing!";
+      else feedback = " Needs more study. Try again!";
+      document.getElementById("feedback").innerText = feedback;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

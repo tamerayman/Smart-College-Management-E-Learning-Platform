@@ -1,0 +1,421 @@
+body{
+  width: auto;
+  transition: 0.3s ease;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  
+  
+}
+   button {
+
+
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 40px;
+      background:none ;
+      color: white;
+    
+    transition: 0.5s;
+  }
+.mean{
+  display: none;
+  position: absolute; 
+  top: 80px; 
+  left: 20px; 
+  z-index: 1000;
+background: rgb(255, 255, 255);
+width: 170px;
+height: 420px;
+border: 3px #4434f3 solid;
+border-radius: 12px;
+margin-left: 8%;
+box-shadow: 0px 0px 10px  rgba(43, 43, 43, 0.687);
+/* opacity: 0; */
+
+}
+.mean.active {
+  display: block; 
+}
+
+ul{
+    list-style: none;
+    position: relative;
+    left: -28px;
+    top: -8px;
+
+    }
+
+ ul li a{
+
+    height: 40px;
+width: 110%;
+ background-color: #103054;
+text-decoration: none;
+ margin:7px 0px;
+ border-radius: 15px;
+ border: 2px solid #4434f3; 
+
+display:flex;
+/* justify-content: space-between; */
+align-items: center;
+gap: 25px;
+transition: 0.5s;
+
+            }
+ ul li a i{
+color: aliceblue;
+font-size: 18px;
+margin: 12px 0px 10px 15px;
+transition: 0.5s;
+         } 
+ul li a p{
+align-items: center;
+padding: 0 10px;  
+color: aliceblue;
+font-size: 15px;
+letter-spacing: 0.5px;
+transition: 0.5s;
+        }
+      
+
+        ul li a:hover {
+      background: #103054c7;
+      }
+  
+
+        ul li a.active {
+          border: 2px solid #f3b034; 
+          background: white;
+      }
+      
+      ul li a.active i {
+          color: #f3b034; 
+      }
+      
+      ul li a.active p {
+          color: #f3b034; 
+      }
+      
+
+header{
+  padding-top: 5px;
+  height: 60px;
+  padding: 0 30px;
+  z-index: 2200;
+  background-color: #103054;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: fixed;
+  width: 96%;
+}
+
+header img{
+  height: 40px;
+  width: 40px;
+  margin-right: 6px;
+}
+
+
+.bx-menu{
+  color: white;
+  cursor: pointer;
+  font-size: 40px;
+  transition: transform 0.3s;
+  margin-left: 10px;
+}
+
+.bx-menu:hover,.bx-x:hover {
+  transform: scale(1.1);
+}
+
+.icons{
+  width: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bxs-user-circle{
+  font-size: 40px;
+  color: white;
+}
+.icons .bxs-bell{
+  font-size: 25px;
+  margin-right: 8px;
+  color:white;
+}
+
+
+main img{
+  width: 100%;
+  height: 394px;
+  padding-top: 60px;
+}
+main h1{
+  color: black;
+  margin-bottom: 40px;
+  letter-spacing: 1.5px;
+}
+main p{
+  color: #626161;
+  font-family: Roboto Condensed;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 38px;
+  word-spacing: 3px;
+}
+main span{
+  font-weight: bold;
+  font-size: 19px;
+  color: #626161;
+}
+
+.container{
+  padding: 30px ;
+  width: 85%;
+  height: 386px;
+  margin: 50px auto ;
+
+  border-radius: 20px;
+  background-color: #ececec;
+  box-shadow: 0px 0px 10px 1px #e0e0e0;
+
+  box-shadow: 0px 4px 15px 1px #c2c1c1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  overflow: hidden;
+}
+.description{
+  width: 50%;
+  height: 100%;
+}
+
+.btnsContainer{
+  width: 30%;
+  height: 190px;
+}
+.btnsContainer button{
+  width: 180px;
+  height: 50px;
+  font-size: 19px;
+  margin: 25px 30px;
+  border-radius: 10px;
+  color: white;
+  background-color: #38618a;
+  border: transparent;
+
+  display: flex;
+  align-items:center;
+  justify-content: center;
+
+  transition: .5s ease;
+}
+.btnsContainer button:hover {
+  background-color: #4c749c;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.btnsContainer button:focus{
+  background-color: white;
+  color: #103054;
+  border: #F3B034 solid 3px;
+  cursor: pointer;
+}
+.btnsContainer i{
+  margin-left: 8px;
+  font-size: 25px;
+}
+
+/*footer*/
+footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  height: 80px;
+  padding: 0 50px;
+  color: #ffffff9c;
+  background-color: #001D3D;
+}
+
+footer p{
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: line-through;
+}
+
+.footerIcons{
+  display: flex;
+  justify-content: space-between;
+  width: 16%;
+}
+.footerIcons i{
+  color: #ffffff9c;
+  font-size: 32px;
+
+  transition: .5s ease;
+}
+
+.footerIcons i:hover{
+  color: white;
+  transform: scale(1.1);
+}
+
+
+/*smaller screens*/
+
+@media ((max-width:1100px)) {
+  .container{
+    width: 78%;
+    height: 430px;
+    margin: 45px auto ;
+    padding-bottom: 10px;
+  }
+  .description{
+    width: 55%;
+  }
+  .btnsContainer button{
+    width: 160px;
+    height: 45px;
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  .icons{
+    margin-right: 50px;
+  }
+  main p{
+    font-size: 17px;
+    line-height: 34px;
+    letter-spacing: 0%;
+  }
+  main img{
+    height: 350px;
+  }
+  .footerIcons{
+    width: 18%;
+  }
+  .footerIcons i{
+    font-size: 27px;
+  }
+  footer p{
+    font-size: 18px;
+    padding-bottom: 10px;
+  }
+  footer{
+    padding: 0 40px;
+  }
+  .footerIcons i{
+    font-size: 30px;
+  }
+  footer p{
+    font-size: 22px;
+  }
+}
+
+@media ((max-width:800px)) {
+  .container{
+    width: 70%;
+    height: 430px;
+    margin: 40px auto;
+    padding-bottom: 15px;
+  }
+  .description{
+    width: 55%;
+  }
+  .btnsContainer button{
+    width: 135px;
+    height: 40px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  .btnsContainer i{
+    font-size: 19px;
+  }
+  
+  main p{
+    font-size: 15px;
+      line-height: 28px;
+      letter-spacing: 0%;
+  
+  }
+  main img{
+    height: 300px;
+  }
+
+  .footerIcons{
+      width: 16%;
+    }
+  .footerIcons i{
+    font-size: 25px;
+  }
+  footer p{
+    font-size: 20px;
+  }
+  footer{
+    padding: 0 30px;
+  }
+}
+
+
+@media ((max-width:650px)) {
+  header img{
+    margin-right: -8px;
+  }
+  .container{
+    width: 70%;
+    height: 430px;
+    margin: 40px auto;
+    padding-bottom: 15px;
+  }
+  .description{
+    width: 50%;
+  }
+  .btnsContainer{
+    width: 35%;
+  }
+
+  .btnsContainer button{
+    width: 100px;
+    height: 37px;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  .btnsContainer i{
+    font-size: 17px;
+  }
+  .icons{
+    margin-right: 70px;
+  }
+  main p{
+    font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0%;
+  
+  }
+  main img{
+    height: 250px;
+  }
+  .footerIcons{
+    width: 20%;
+  }
+  .footerIcons i{
+    font-size: 22px;
+  }
+  footer p{
+    font-size: 18px;
+    padding-bottom: 10px;
+  }
+  footer{
+    padding: 0 30px;
+  }
+}
+
+

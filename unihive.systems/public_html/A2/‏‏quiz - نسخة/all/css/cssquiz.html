@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>CSS Quiz with Animation</title>
+  <style>
+    body {
+      background-color: #0B2C53;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .quiz-container, .result, #startBtn {
+      background: #0001037e;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .question {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .options button {
+      background-color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #000;
+      font-weight: bold;
+      font-size: large;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s;
+    }
+
+    .options button .icon {
+      opacity: 0;
+      transition: opacity 0.4s;
+      font-size: 18px;
+    }
+
+    .correct {
+      background-color: #2e7d32 !important;
+      color: #fff !important;
+    }
+
+    .correct .icon {
+      opacity: 1;
+      color: #fff;
+    }
+
+    .wrong {
+      background-color: #c62828 !important;
+      color: #fff !important;
+    }
+
+    .wrong .icon {
+      opacity: 1;
+      color: #fff;
+    }
+
+    .disabled {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    #nextBtn {
+      margin-top: 20px;
+      padding: 10px 25px;
+      background-color: #f4b400;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 18px;
+      display: none;
+      cursor: pointer;
+    }
+
+    .result {
+      color: #333;
+      display: none;
+      background: #fff;
+    }
+
+    .score-text {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .progress {
+      background: #eee;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 20px;
+      margin: 15px 0;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: #4caf50;
+      transition: width 1s ease-in-out;
+    }
+
+    .feedback {
+      font-size: 18px;
+      margin-top: 10px;
+      color: #555;
+    }
+
+    #startBtn {
+      display: block;
+      margin-top: 100px;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 15px 40px;
+      background-color: #0b142b;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #quiz {
+      display: none;
+    }
+
+    /* أنيميشن */
+    .fadeInZoom {
+      animation: zoomIn 0.6s ease forwards;
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    @keyframes zoomIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .fadeOut {
+      animation: fadeOut 0.5s ease forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-left">
+           <div class="logo">
+                <img style=" width: 55px; height: 55px;" src="logo.png" alt="logo-img" class="img-fluid">
+           </div>
+           <i class="bx bx-menu menu-icon" onclick="toggleMenu()"></i>
+       </div>
+        <div class="profile">
+            <div class="notification">
+              <a href="" ><i style=" font-size: xx-large; color: #ffffff;" class='bx bxs-bell'></i></a>
+              <span class="badge">3</span>
+            </div>
+            <a href="" ><i class='bx bxs-user-circle'></i></a>
+        </div>
+        <div class="sidebar" id="sidebar">
+           <ul id="mean" class="mean" >
+              <li><a href="#"><i class='bx bxs-dashboard'></i><p>Dashbord</p></a></li>
+              <li><a href="#"><i class='bx bx-library'></i><p>Library</p></a></li>   
+              <li><a href="file:///C:/Users/%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84/Downloads/quiz/all/index2.html"><i class='bx bx-question-mark'></i>   <p>Quizzes</p> </a>       </li>   
+              <li><a href="#"><i class='bx bxs-videos' ></i><p>Courses</p>  </a></li>   
+              <li><a href="#"><i class='bx bxs-file-blank'></i><p>Sheets</p></a></li>   
+              <li><a href="#"><i class='bx bxs-video'></i><p>Meeting</p></a></li>   
+              <li><a href="#"><i class='bx bxs-message-rounded-dots' ></i><p>Chat</p></a></li>   
+              <li><a href="#"><i class='bx bxs-calendar'></i><p >Calender</p></a></li>   
+          </ul>
+        </div>               
+    </div>
+     <!-- search -->
+      <center>
+        <div class="search-container">
+           <i class="bx bx-search-alt search-icon" onclick="triggerSearch()"></i>
+           <input type="text" class="search-bar" id="searchInput" >
+        </div>
+     <!-- search end -->
+     </center>
+    <!--banner-start-->
+    <section class="banner-main-con about-page-main-banner-con">
+    <div class="container">
+       <div class="banner-con about-page-banner-con text-center">
+          <div class="row wow slideInLeft">
+             <div class="col-lg-12">
+                <div class="about-page-banner-title">
+                   <h1> CSS Quizzes </h1>
+                   <h4 class="mb-0">This section contains a CSS basics test. If you've studied the basics of CSS,<br> you can now test yourself on the basics and your understanding of them</h4>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+    </section>
+
+  <!-- زر البدء -->
+
+  <button id="startBtn" onclick="startQuiz()">Start Quiz</button>
+   
+  <!-- الكويز -->
+  <div class="quiz-container" id="quiz">
+    <div id="question" class="question"></div>
+    <div id="options" class="options"></div>
+    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+  </div>
+
+  <!-- النتيجة -->
+  <div class="result" id="result">
+    <h3> Quiz Result</h3>
+    <div class="score-text" id="scoreText"></div>
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="feedback" id="feedback"></div>
+  </div>
+  <by><br><br><br>
+  <script>
+     const questions = [
+      { q: "What does CSS stand for?", options: ["Cascading Style Sheets", "Creative Style Sheets", "Computer Style Sheets", "Colorful Style Sheets"], answer: 0 },
+      { q: "Which property is used to change the background color?", options: ["bgcolor", "background-color", "color", "background"], answer: 1 },
+      { q: "How do you insert a comment in a CSS file?", options: ["// this is a comment", "/* this is a comment */", "' this is a comment", "// this is a comment //"], answer: 1 },
+      { q: "Which CSS property controls the text size?", options: ["font-style", "text-size", "font-size", "text-style"], answer: 2 },
+      { q: "How do you make each word in a text start with a capital letter?", options: ["text-transform:capitalize", "text-transform:uppercase", "text-transform:lowercase", "text-transform:initial"], answer: 0 },
+      { q: "Which property is used to change the text color?", options: ["fgcolor", "text-color", "color", "font-color"], answer: 2 },
+      { q: "Which CSS property is used to change the font of an element?", options: ["font-family", "font-style", "font-weight", "font-variant"], answer: 0 },
+      { q: "How do you select an element with id 'demo'?", options: ["#demo", ".demo", "demo", "*demo"], answer: 0 },
+      { q: "How do you select elements with class name 'test'?", options: [".test", "#test", "test", "*test"], answer: 0 },
+      { q: "Which property is used to make text bold?", options: ["font-weight", "font-style", "text-decoration", "font-variant"], answer: 0 },
+      { q: "Which property is used to underline text?", options: ["text-decoration", "text-transform", "text-align", "text-style"], answer: 0 },
+      { q: "Which property is used to align text to the center?", options: ["text-align: center", "align: center", "horizontal-align: center", "center-align"], answer: 0 },
+      { q: "Which property is used to set the height of an element?", options: ["height", "max-height", "min-height", "size"], answer: 0 },
+      { q: "Which property is used to set the width of an element?", options: ["width", "max-width", "min-width", "size"], answer: 0 },
+      { q: "Which property is used to add space between the border and the content?", options: ["padding", "margin", "spacing", "border-spacing"], answer: 0 },
+      { q: "Which property is used to add space outside the border?", options: ["margin", "padding", "spacing", "border-spacing"], answer: 0 },
+      { q: "Which property is used to set the border color?", options: ["border-color", "color", "border-style", "border-width"], answer: 0 },
+      { q: "Which property is used to set the border style?", options: ["border-style", "style", "border-type", "border"], answer: 0 },
+      { q: "Which property is used to set the border width?", options: ["border-width", "width", "border-size", "size"], answer: 0 },
+      { q: "Which property is used to set the maximum height of an element?", options: ["max-height", "height", "min-height", "size"], answer: 0 },
+      { q: "Which property is used to set the minimum height of an element?", options: ["min-height", "height", "max-height", "size"], answer: 0 },
+      { q: "Which property is used to set the maximum width of an element?", options: ["max-width", "width", "min-width", "size"], answer: 0 },
+      { q: "Which property is used to set the minimum width of an element?", options: ["min-width", "width", "max-width", "size"], answer: 0 },
+      { q: "Which property is used to set the opacity of an element?", options: ["opacity", "transparency", "visibility", "display"], answer: 0 },
+      { q: "Which property is used to hide an element?", options: ["display: none", "visibility: hidden", "opacity: 0", "all of the above"], answer: 3 },
+      { q: "Which property is used to make an element visible?", options: ["display: block", "visibility: visible", "opacity: 1", "all of the above"], answer: 3 },
+      { q: "Which property is used to float an element to the left?", options: ["float: left", "align: left", "position: left", "display: left"], answer: 0 },
+      { q: "Which property is used to float an element to the right?", options: ["float: right", "align: right", "position: right", "display: right"], answer: 0 },
+      { q: "Which property is used to clear floats?", options: ["clear", "float", "overflow", "display"], answer: 0 },
+      { q: "Which property is used to set the position of an element?", options: ["position", "display", "float", "align"], answer: 0 }
+    ];
+
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function startQuiz() {
+      const startBtn = document.getElementById("startBtn");
+      const quizBox = document.getElementById("quiz");
+
+      // خروج سلس
+      startBtn.classList.add("fadeOut");
+
+      setTimeout(() => {
+        startBtn.style.display = "none";
+        quizBox.style.display = "block";
+        quizBox.classList.add("fadeInZoom");
+        loadQuestion();
+      }, 500);
+    }
+
+    function loadQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById("question").innerHTML = `${currentQuestion + 1}: ${q.q}`;
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+      document.getElementById("nextBtn").style.display = "none";
+
+      q.options.forEach((opt, index) => {
+        const btn = document.createElement("button");
+        const spanText = document.createElement("span");
+        const spanIcon = document.createElement("span");
+
+        spanText.innerHTML = opt;
+        spanIcon.className = "icon";
+        spanIcon.textContent = "✔";
+
+        btn.appendChild(spanText);
+        btn.appendChild(spanIcon);
+        btn.onclick = () => checkAnswer(index);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selectedIndex) {
+      const q = questions[currentQuestion];
+      const buttons = document.querySelectorAll("#options button");
+
+      buttons.forEach((btn, i) => {
+        btn.classList.add("disabled");
+        const icon = btn.querySelector(".icon");
+
+        if (i === q.answer) {
+          btn.classList.add("correct");
+          icon.textContent = "✔";
+        }
+
+        if (i === selectedIndex && i !== q.answer) {
+          btn.classList.add("wrong");
+          icon.textContent = "✖";
+        }
+      });
+
+      if (selectedIndex === q.answer) score++;
+
+      if (currentQuestion < questions.length - 1) {
+        document.getElementById("nextBtn").style.display = "inline-block";
+      } else {
+        setTimeout(showFinalResult, 1000);
+      }
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      loadQuestion();
+    }
+
+    function showFinalResult() {
+      document.getElementById("quiz").style.display = "none";
+      const resultBox = document.getElementById("result");
+      resultBox.style.display = "block";
+      resultBox.classList.add("fadeInZoom");
+
+      const percent = Math.round((score / questions.length) * 100);
+      document.getElementById("scoreText").innerText = `You scored ${score} out of ${questions.length} (${percent}%)`;
+      document.getElementById("progressBar").style.width = percent + "%";
+
+      let feedback = "";
+      if (percent === 100) feedback = " Perfect! You're a CSS master!";
+      else if (percent >= 80) feedback = " Great job!";
+      else if (percent >= 50) feedback = " Keep practicing!";
+      else feedback = " You need more CSS love!";
+      document.getElementById("feedback").innerText = feedback;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="super-classes.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mobile.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Quizzes</title>
+  <style>
+
+    .tabs {
+        width: 300px;
+        height: 60px;
+      display: flex;
+     
+    }
+
+    .tabs button {
+      flex: 1;
+      padding: 15px;
+      background-color: #eee;
+      border-radius: 50PX;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background #000000a8;
+    }
+
+    .tabs button.active {
+      background-color: #00000044;;
+      color: #fff;
+    }
+
+    .container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content-wrapper {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .tab-content {
+      width: 100%;
+      flex-shrink: 0;
+      overflow-y: auto;
+    }
+
+    .go-icon {
+      background-color: #081d338e;
+      color: white;
+      padding: 20px 30px;
+      border-radius: 30px;
+      font-size: 30px;
+      text-decoration: none;
+      text-align: center;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.808);
+    }
+
+    .go-icon:hover {
+      background-color: #1a406b9d;
+      color: white;
+      transform: scale(1.05);
+    }
+
+
+  </style>
+</head>
+<body> <!---header-and-banner-section-->
+      <div class="header-and-banner-con w-100">
+         <div class="header-and-banner-inner-con overlay-content">
+            <div class="navbar" style="margin-top: 0px;">
+               <div class="navbar-left">
+                  <div class="logo">
+                       <img style="padding-bottom:15px; width: 55px; height: 70px;" src="logo.png" alt="logo-img" class="img-fluid">
+                  </div>
+                  <i class="bx bx-menu menu-icon" onclick="toggleMenu()"></i>
+              </div>
+               <div class="profile">
+                   <div class="notification">
+                     <a href="" ><i style=" font-size: xx-large; color: #ffffff;" class='bx bxs-bell'></i></a>
+                     <span class="badge">3</span>
+                   </div>
+                   <a href="" ><i class='bx bxs-user-circle'></i></a>
+               </div>
+               <div class="sidebar" id="sidebar">
+                  <ul id="mean" class="mean" >
+                     <li><a href="#"><i class='bx bxs-dashboard'></i><p>Dashbord</p></a></li>
+                     <li><a href="#"><i class='bx bx-library'></i><p>Library</p></a></li>   
+                     <li><a href="file:///C:/Users/%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84/Downloads/quiz/all/index2.html"><i class='bx bx-question-mark'></i>   <p>Quizzes</p> </a>       </li>   
+                     <li><a href="#"><i class='bx bxs-videos' ></i><p>Courses</p>  </a></li>   
+                     <li><a href="#"><i class='bx bxs-file-blank'></i><p>Sheets</p></a></li>   
+                     <li><a href="#"><i class='bx bxs-video'></i><p>Meeting</p></a></li>   
+                     <li><a href="#"><i class='bx bxs-message-rounded-dots' ></i><p>Chat</p></a></li>   
+                     <li><a href="#"><i class='bx bxs-calendar'></i><p >Calender</p></a></li>   
+             
+                 </ul>
+               </div>               
+          </div>
+            <!-- search -->
+             <center>
+               <div class="search-container">
+                  <i class="bx bx-search-alt search-icon" onclick="triggerSearch()"></i>
+                  <input type="text" class="search-bar" id="searchInput" >
+               </div>
+            <!-- search end -->
+            <section class="banner-main-con">
+                <div class="container">
+                   <!--banner-start-->
+                   <div class="banner-con">
+                      <div class="row">
+                         <div class="col-lg-7 col-md-7 col-sm-12 d-flex justify-content-center flex-column banner-main-left-con">
+                            <div class="banner-left-con wow slideInLeft">
+                               <div class="banner-heading">
+                                  <h1>Simply  Powerful <br>
+                                     Solve Examples
+                                  </h1>
+                                  <br>
+                               </div>
+                               <div class="banner-content">
+                                  <p class="col-lg-11 pl-0 pr-0"> a set of tests that are usually timed <br><br>
+                                     You can take tests on all programming languages ​​
+                                     to measure your academic and scientific level in these languages, and you can retake the test more than once.
+                                  </p>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="col-lg-5 col-md-5 col-sm-12">
+                            <div class="banner-right-con wow slideInRight">
+                               <figure  class="mb-0">
+                                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                                  <img  class="floating-image"  src="xx.webp" alt="banner-right-img">
+                               </figure>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                   <!--banner-end-->
+                </div>
+             </section>            
+         <!---header-and-banner-section-->
+         <!---slider-section-->
+
+<div class="tabs">
+  <button class="active" onclick="switchTab(0)">TIS</button>
+  <button onclick="switchTab(1)"> BIS </button>
+</div>
+
+<div class="container">
+  <div class="content-wrapper" id="slider">
+    <div class="tab-content">
+      <br><br><br>
+      <a href="second-page.html" class="go-icon"><i class='bx bx-right-arrow-circle'></i> Upload your quiz</a>
+      <section> 
+        <div class="slider-con w-100">
+          
+           <div class="container">
+              <div class="slider-heading text-center">
+                 <h2>Everything we offer</h2>
+              </div>
+              <div class="row wow fadeInUp">
+                 <div class="col-lg-2 col-md-4 col-6">
+                    <a href="html/htmlquiz.html">
+                    <div class="partner-box text-center mb-lg-0 mb-4">
+                       <figure class="mb-0">
+                          <img style="width: 140px; height: 130px;" src="html.png" alt="" class="img-fluid">
+                       </figure>
+                    </div>
+                    </a>
+                 </div>
+                 <div class="col-lg-2 col-md-4 col-6">
+                    <a href="C.html">
+                    <div class="partner-box text-center mb-lg-0 mb-4">
+                       <figure class="mb-0">
+                          <img style="width: 130px; height: 130px;" src="C_Logo.png" alt="" class="img-fluid">
+                       </figure>
+                    </div>
+                    </a>
+                 </div>
+                 <div class="col-lg-2 col-md-4 col-6">
+                    <a href="Python.html">
+                    <div class="partner-box text-center mb-lg-0 mb-4">
+                       <figure class="mb-0">
+                          <img style="width: 150px; height: 130px;" src="python.png" alt="" class="img-fluid">
+                       </figure>
+                    </div>
+                    </a>
+                 </div>
+                 <div class="col-lg-2 col-md-4 col-6">
+                    <a href="C++.html">
+                    <div class="partner-box text-center">
+                       <figure class="mb-0">
+                          <img style="width: 150px; height: 130px;" src="c++.png" alt="" class="img-fluid">
+                       </figure>
+                    </div>
+                    </a>
+                 </div>
+                 <div class="col-lg-2 col-md-4 col-6">
+                    <a href="css.html">
+                    <div class="partner-box text-center">
+                       <figure class="mb-0">
+                          <img style="width: 180px; height: 130px;" src="css (2).png" alt="" class="img-fluid">
+                       </figure>
+                    </div>
+                    </a>
+                 </div>
+                 <div class="col-lg-2 col-md-4 col-6">
+                    <a href="Javascript.html">
+                    <div class="partner-box text-center">
+                       <figure class="mb-0">
+                          <img style="width: 180px; height: 130px;" src="java.png" alt="" class="img-fluid">
+                       </figure>
+                    </div>
+                    </a>
+                 </div>
+              </div>
+           </div>
+     </section>
+     <!---slider-section--> 
+          <!--- Effective-section-->
+          <section>
+             <div class="Pricing-con dots-left-img">
+                <div class="container overlay-content">
+                   <div class="Pricing-title text-center">
+                      <h5>What we do</h5>
+                      <h2>Secure your apartment and house
+                      </h2>
+                   </div>
+                   <div class="row wow fadeInUp">
+                      <div class="col-lg-4 col-md-4 col-12 mb-lg-0 mb-md-0 mb-4 Pricing-box-main-con">
+                         <a href="C++.html">
+                         <div class="Pricing-box-con">
+                            <div class="Pricing-box-img text-center">
+                               <figure>
+                                  <img style="width: 100px; height: 100px;" src="img6.png" alt="pricing-box-img" class="img-fluid">
+                               </figure>
+                            </div>
+                            <div class="Pricing-box-heading text-center">
+                               <h2>C++</h2>
+                            </div>
+                            <div class="Pricing-box-list text-xl-left text-lg-left text-md-left text-center">
+                               <p>
+                                  You can choose between the types of challenges in C++ and you can challenge yourself in each part separately, as the challenges have been divided in a wonderful way that helps the user to understand well.<br><br>
+                              </p>
+                            </div>
+                         </div>
+                          </a>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-12 mb-lg-0 mb-md-0 mb-4 Pricing-box-main-con">
+                          <a href="html/htmlquiz.html">
+                         <div class="Pricing-box-con">
+                            <div class="Pricing-box-img text-center">
+                               <figure>
+                                  <img style="width: 100px; height: 100px;" src="img6.png" alt="pricing-box-img" class="img-fluid">
+                               </figure>
+                            </div>
+                            <div class="Pricing-box-heading text-center">
+                               <h2>HTML</h2>
+                            </div>
+                            <div class="Pricing-box-list text-xl-left text-lg-left text-md-left text-center">
+                               <p>
+                                  More than 35 questions in HTML in Arabic so that the Arab student who intends to enter the world of the web can consolidate everything he has learned about HTML in his mind.<br><br>
+                               </p>
+                            </div>
+                         </div>
+                          </a>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-12 Pricing-box-main-con">
+                           <a href="css/cssquiz.html">
+                         <div class="Pricing-box-con">
+                            <div class="Pricing-box-img text-center">
+                               <figure>
+                                  <img style="width: 100px; height: 100px;" src="img6.png" alt="pricing-box-img" class="img-fluid">
+                               </figure>
+                            </div>
+                            <div class="Pricing-box-heading text-center">
+                               <h2>CSS</h2>
+                            </div>
+                            <div class="Pricing-box-list text-xl-left text-lg-left text-md-left text-center">
+                               <p>
+                                  More than 10 questions about CSS in Arabic so that the Arab student who intends to enter the world of the web can consolidate everything he has learned about CSS in his mind.<br><br><br>
+                               </p>   
+                            </div>
+                         </div>
+                          </a>
+                         <br><br><br><br><br>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-12 mb-lg-0 mb-md-0 mb-4 Pricing-box-main-con">
+                           <a href="Python.html">
+                         <div class="Pricing-box-con">
+                            <div class="Pricing-box-img text-center">
+                               <figure>
+                                  <img style="width: 100px; height: 100px;" src="img6.png" alt="pricing-box-img" class="img-fluid">
+                               </figure>
+                            </div>
+                            <div class="Pricing-box-heading text-center">
+                               <h2> Python</h2>
+                            </div>
+                            <div class="Pricing-box-list text-xl-left text-lg-left text-md-left text-center">
+                               <p>
+                                 Choose from a variety of Python challenges and challenge yourself in each section. Challenges are divided from easiest to hardest, so you can determine the appropriate testing level for you.
+                               </p>
+                               </ul>
+                            </div>
+                         </div>
+                          </a>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-12 mb-lg-0 mb-md-0 mb-4 Pricing-box-main-con">
+                          <a href="Javascript.html">
+                         <div class="Pricing-box-con">
+                            <div class="Pricing-box-img text-center">
+                               <figure>
+                                  <img style="width: 100px; height: 100px;" src="img6.png" alt="pricing-box-img" class="img-fluid">
+                               </figure>
+                            </div>
+                            <div class="Pricing-box-heading text-center">
+                               <h2>Javascript</h2>
+                            </div>
+                            <div class="Pricing-box-list text-xl-left text-lg-left text-md-left text-center">
+                               <p>
+                                  You can choose from the types of challenges available in JavaScript and challenge yourself in each section separately, as the challenges are divided in a way that helps in good understanding.<br><br>
+                               </p>
+                            </div>
+                         </div>
+                          </a>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-12 Pricing-box-main-con"> 
+                         <a href="C.html">
+                         <div class="Pricing-box-con">
+                            <div class="Pricing-box-img text-center">
+                               <figure>
+                                  <img style="width: 100px; height: 100px;" src="img6.png" alt="pricing-box-img" class="img-fluid">
+                               </figure>
+                            </div>
+                            <div class="Pricing-box-heading text-center">
+                               <h2>C</h2>
+                            </div>
+                            <div class="Pricing-box-list text-xl-left text-lg-left text-md-left text-center">
+                               <p>
+                                You can choose between the types of C language challenges and you can challenge yourself in each part, as the challenges are divided in a way that helps the user to understand.<br><br>                               </p>
+                             </div>
+                         </div> 
+                          </a>
+                      </div>     
+                   </div>
+                </div>
+             </div>
+          </section> 
+             <!--- Effective-section-->
+             
+        <!---information-section-->
+        <section>
+         <div class="informationmain-con dots-left-img w-100">
+            <div class="container overlay-content">
+               <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-12 informationmain-left-con">
+                     <div >
+                        <figure class="mb-0">
+                           <img style="width: 90%; height: 100%;" src="a6.jpg" alt="informationmain-left-sec-img">
+                        </figure>
+                     </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-12 informationmain-right-con wow slideInRight">
+                     <div class="informationmain-right-heading">
+                        <h5>Important for those who don't know</h5>
+                        <h2>Why is programming important?
+                        </h2>
+                     </div>
+                     <div class="informationmain-right-content">
+                      <p>
+                          <i class='bx bxs-check-circle'></i>Specific programming languages ​​such as C are used in robotics and building computer operating systems.<br>
+                          <i class='bx bxs-check-circle'></i>Many languages ​​are used to create websites, games, and mobile applications, such as Java or HTML. They are also used in medical technology and automation, and in these fields, C, SQL, and Python are the most important.<br>
+                          <i class='bx bxs-check-circle'></i>Java handles countless records and performs analytics across massive data, besides being the primary tool for Android phones.<br>
+                          <i class='bx bxs-check-circle'></i>Python has been used to drive advanced analytics and data science. These programming languages ​​enable the creation of AI-based machine learning models.<br>
+                      </p>
+                   </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!---information-section-->
+      <!-- service-section -->
+      <div class="service-main-con">
+          <div class="row  ml-0 mr-0">
+             <div class="col-lg-6 pl-0 pr-0">
+                <div class="service-main-left-top-con dots-right-img">
+                   <div class="row">
+                      <div class="col-xl-7 col-lg-12 ml-auto">
+                         <div class="service-main-left-con wow slideInLeft">
+                            <h5>the goal</h5>
+                            <h2>What is the benefit of tests?
+                            </h2>
+                            <p>
+                               Individual Question Library - By reusing past test questions, you can quickly create assessments.
+                            </p>
+                            <p>
+                               No more wasting time deciphering long questions by hand.
+                            </p>
+                            <div class="row service-skill-sttaf-con">
+                               <div class="col-lg-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                  <div class="circle-wrap firstPercentage">
+                                     <div class="circle">
+                                        <div class="mask full">
+                                           <div class="fill"></div>
+                                        </div>
+                                        <div class="mask half">
+                                           <div class="fill"></div>
+                                        </div>
+                                        <div class="inside-circle">
+                                           <div class="service-skill-sttaf-item-con">
+                                              <div class="service-skill-sttaf-item-title service-skill-sttaf-item1-con d-flex align-items-center justify-content-center">
+                                                 <h4 class="d-table-cell align-middle mb-0 text-center count">95</h4>
+                                                 <span class="text-white static-txt2">%</span>
+                                              </div>
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                                  <div class="service-skill-sttaf-item-heading">
+                                     <h3 class="mb-0 text-white">prevent cheating</h3>
+                                  </div>
+                               </div>
+                               <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                                  <div class="circle-wrap secondPercentage">
+                                     <div class="circle">
+                                        <div class="mask full">
+                                           <div class="fill"></div>
+                                        </div>
+                                        <div class="mask half">
+                                           <div class="fill"></div>
+                                        </div>
+                                        <div class="inside-circle">
+                                           <div class="service-skill-sttaf-item-con">
+                                              <div class="service-skill-sttaf-item-title service-skill-sttaf-item2-con text-center d-flex align-items-center justify-content-center">
+                                                 <h4 class=" mb-0 text-center count">68</h4>
+                                                 <span class="text-white static-txt2">%</span>
+                                              </div>
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                                  <div class="service-skill-sttaf-item-heading">
+                                     <h3 class="mb-0 text-white"> Saves teachers timetime-saver</h3>
+                                  </div>
+                               </div>
+                               <div class="col-lg-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                  <div class="circle-wrap thirdPercentage">
+                                     <div class="circle">
+                                        <div class="mask full">
+                                           <div class="fill"></div>
+                                        </div>
+                                        <div class="mask half">
+                                           <div class="fill"></div>
+                                        </div>
+                                        <div class="inside-circle">
+                                           <div class="service-skill-sttaf-item-con">
+                                              <div class="service-skill-sttaf-item-title service-skill-sttaf-item3-con text-center d-flex align-items-center justify-content-center">
+                                                 <h4 class="mb-0 text-center count">69</h4>
+                                                 <span class="text-white static-txt2">%</span>
+                                              </div>
+                                           </div>
+                                        </div>
+                                     </div>
+                                  </div>
+                                  <div class="service-skill-sttaf-item-heading">
+                                     <h3 class="mb-0 text-white">Monitor students on time</h3>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <div class="col-lg-6 pl-0 pr-0">
+              <figure class="mb-0">
+                  <img style="width: 80%; height: 80%;" src="a2.jpg" alt="informationmain-left-sec-img">
+               </figure>
+             </div>
+          </div>
+       </div>
+      <!-- service-section -->
+  
+      <!-- Pricing-section -->
+      <section>
+          <div class="Pricing-con dots-left-img">
+             <div class="container overlay-content">
+                <div class="Pricing-title text-center">
+                   <h5>We simplify all the moving pieces so you can administer your exams securely and with confidence without technical complexity.</h5>
+                   <h2>Everything you need to create and conduct secure comprehensive exams</h2>
+                </div>
+                <div class="row wow fadeInUp">
+                   <div class="col-lg-4 col-md-4 col-12 mb-lg-0 mb-md-0 mb-4 Pricing-box-main-con">
+                      <div class="Pricing-box-con">
+                         <div class="Pricing-box-img text-center">
+                            <figure>
+                               <img style="width: 90px; height: 120px;" src="pricing-box-img1.png" alt="pricing-box-img" class="img-fluid">
+                            </figure>
+                         </div>
+                         <div class="Pricing-box-heading text-center">
+                            <h4>Our tests</h4>
+                            <h2>THE GOAL</h2>
+                         </div>
+                         <div class="Pricing-box-list text-xl-left text-lg-left text-md-left text-center">
+                            <ul class="list-unstyled list">
+                               <li><i class='bx bxs-chevron-right-circle'></i>Prevent cheating with our secure browser lockdown mode <br></li>
+                            </ul>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="col-lg-4 col-md-4 col-12 mb-lg-0 mb-md-0 mb-4 Pricing-box-main-con">
+                      <div class="Pricing-box-con">
+                         <div class="Pricing-box-img text-center">
+                            <figure>
+                               <img style="width: 90px; height: 120px;" src="pricing-box-img2.png" alt="pricing-box-img" class="img-fluid">
+                            </figure>
+                         </div>
+                         <div class="Pricing-box-heading text-center">
+                            <h4>Our tests</h4>
+                            <h2>THE GOAL</h2>
+                         </div>
+                         <div class="Pricing-box-list text-xl-left text-lg-left text-md-left text-center">
+                            <ul  class="list-unstyled list">
+                               <li><i class='bx bxs-chevron-right-circle'></i></i>Collect the exams your way. Stand alone or through an LMS.
+                                   Online or offline. With or without handwritten attachments.</li>
+                            </ul>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="col-lg-4 col-md-4 col-12 Pricing-box-main-con">
+                      <div class="Pricing-box-con">
+                         <div class="Pricing-box-img text-center">
+                            <figure>
+                               <img style="width: 90px; height: 120px;" src="pricing-box-img3.png" alt="pricing-box-img" class="img-fluid">
+                            </figure>
+                         </div>
+                         <div class="Pricing-box-heading text-center">
+                            <h4>Our tests</h4>
+                            <h2>THE GOAL</h2>
+                         </div>
+                         <div class="Pricing-box-list text-xl-left text-lg-left text-md-left text-center">
+                            <ul class="list-unstyled list">
+                               <li><i class='bx bxs-chevron-right-circle'></i>Empower every student by customizing exams to each student's individual needs</li>
+                            </ul>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </section>
+      <!-- Pricing-section -->
+
+    </div>
+      <!-- Pricing-section -->
+    </div>
+  </div>
+</div>
+       <!-- weight-footer-section -->
+       <section>
+          <div class="weight-footer-main-con bg-overly-img">
+             <div class="container overlay-content">
+                <div class="weight-footer-item-con">
+                   <div class="row wow fadeInUp">
+                      <div class="col-lg-4 col-md-12 col-12 text-lg-left text-md-center">
+                         <div class="weight-footer-item weight-footer-item1 mb-lg-0 mb-3">
+                            <div class="weight-footer-item-img">
+                               <figure>
+                                  <a class="navbar-brand p-0" href="index.html">
+                                     <img style="padding-bottom:15px; width: 60px; height: 68px;" src="logo.png" alt="logo-img" class="img-fluid">
+                                     <span style="color: #ffffff; font-size:xxx-large; "  > uni<span style="color: #ffffff; font-size:xxx-large;" >hive
+                                     </a>
+                               </figure>
+                            </div>
+                            <div class="weight-footer-item-content">
+                               <p class="mb-xl-0 mb-lg-0 mb-md-4 weight-footer-item1-content">
+   
+                               </p>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="col-lg-2 col-md-3 col-5">
+                         <div class="weight-footer-item mb-lg-0 mb-md-0 mb-3">
+                            <div class="weight-footer-item-title">
+                               <h3>About Us</h3>
+                            </div>
+                            <div class="weight-footer-item-link">
+                               <ul class="list-unstyled mb-0">
+                                  <li>
+                                     <a href="about.html">
+                                        library
+                                     </a>
+                                  </li>
+                                  <li>
+                                     <a href="services.html">
+                                        courses
+                                     </a>
+                                  </li>
+                                  <li>
+                                     <a href="pricing.html">
+                                        Quizzes
+                                     </a>
+                                  </li>
+                                  <li>
+                                     <a href="team.html">
+                                         meeting
+                                     </a>
+                                  </li>
+                                  <li>
+                                     <a href="team.html">
+                                        Chat
+                                     </a>
+                                  </li>
+                                  <li>
+                                     <a href="team.html">
+                                        News
+                                     </a>
+                                  </li>
+                                  <li class="mb-0">
+                                     <a href="contact.html">
+                                        Settings
+                                     </a> 
+                                  </li>
+                               </ul>
+                            </div>
+                         </div>
+                      </div>
+                      <div class="col-lg-3 col-md-4 col-7">
+                         <div class="weight-footer-item mb-lg-0 mb-md-0 mb-3">
+                            <div class="weight-footer-item-title">
+                               <h3>Our Services</h3>
+                            </div>
+                            <div class="weight-footer-item-content weight-footer-item-link">
+                               <ul class="list-unstyled mb-0 social-icon-list">
+                                  <li class="weight-footer-item2-content col-lg-11 pl-0 pr-0">
+                                   <i class='bx bx-map-pin'></i>
+                                   <a href="https://maps.app.goo.gl/3ovw1g8LkpQeEnGa7">
+                                     Housing Directorate - Housing Bank - Al Salam District - Port Said
+                                   </a>
+                                  </li>
+                                  <li>
+                                   <i class='bx bx-envelope'></i>
+                                     <a href="mailto:office@ecuritymag.com">
+                                        itu@himc.psu.edu.eg
+                                     </a>
+                                  </li>
+                                  <li>
+                                  <i class='bx bxs-school'></i>
+                                     <a href="https://psu.edu.eg/">
+                                       Port Said University
+                                     </a>
+                                   </li>
+                                  <li>
+                                   <i class='bx bxl-whatsapp'></i>
+                                     <a href="tel:+123456789">
+                                         066-3737125</a>
+                                  </li>
+                                  
+                                  <li class="d-inline-block mb-0"><a href="https://www.facebook.com/MTIS.psu.edu.eg/"><i style="font-size: x-large; color: rgb(48, 29, 218);" class='bx bxl-facebook-circle'></i></a></li>
+                                  <li class="d-inline-block mb-0"><a href="#"><i style="font-size: x-large; color: blue;" class='bx bxl-twitter'></i></a></li>
+                                  <li class="d-inline-block mb-0"><a href="https://www.youtube.com/channel/UCI7m1NhItU2vrBSp7abmpNA"><i style="font-size: x-large; color: rgb(255, 0, 0);" class='bx bxl-youtube'></i></a></li>
+                                  
+                               </ul>
+                               
+                            </div>
+                         </div>
+                      </div>
+                      <div class="col-lg-3 col-md-5 col-12">
+                         <div class="weight-footer-item mb-0">
+                            <div class="weight-footer-item-title">
+                               <h3 class="Newsletter-title">Newsletter</h3>
+                            </div>
+                            <div class="weight-footer-item-form">
+                               <div class="weight-footer-item-form-input">
+                                  <input type="email" placeholder="Enter your email">
+                                  <button class="border-0" value="">
+                                  <img src="submit-img.png" alt="submit-img" class="img-fluid">
+                                  </button>
+                               </div>
+                               <div class="form-group mb-0">
+                                  <input type="checkbox" id="html">
+                                  <label for="html" class="checkbox-details mb-0">I Agree to the Terms</label>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <div class="footer-con">
+                <div class="container overlay-content">
+                   <div class="row">
+                      <div class="col-lg-12">
+                         <div class="footer-con text-center">
+                            <p> Copyright &copy; 2025 &#8211; MTIS </p>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </section>
+       </div>
+       </div>
+      </center>
+       <script src="script.js"></script>
+<script>
+  function switchTab(index) {
+    const slider = document.getElementById('slider');
+    slider.style.transform = `translateX(-${index * 100}%)`;
+
+    document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tabs button')[index].classList.add('active');
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>pointer Quiz</title>
+</head>
+<body>   
+<div class="navbar">
+    <div class="navbar-left">
+       <div class="logo">
+            <img style=" width: 55px; height: 55px;" src="logo.png" alt="logo-img" class="img-fluid">
+       </div>
+       <i class="bx bx-menu menu-icon" onclick="toggleMenu()"></i>
+   </div>
+    <div class="profile">
+        <div class="notification">
+          <a href="" ><i style=" font-size: xx-large; color: #ffffff;" class='bx bxs-bell'></i></a>
+          <span class="badge">3</span>
+        </div>
+        <a href="" ><i class='bx bxs-user-circle'></i></a>
+    </div>
+    <div class="sidebar" id="sidebar">
+       <ul id="mean" class="mean" >
+          <li><a href="#"><i class='bx bxs-dashboard'></i><p>Dashbord</p></a></li>
+          <li><a href="#"><i class='bx bx-library'></i><p>Library</p></a></li>   
+          <li><a href="file:///C:/Users/%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84/Downloads/quiz/all/index2.html"><i class='bx bx-question-mark'></i>   <p>Quizzes</p> </a>       </li>   
+          <li><a href="#"><i class='bx bxs-videos' ></i><p>Courses</p>  </a></li>   
+          <li><a href="#"><i class='bx bxs-file-blank'></i><p>Sheets</p></a></li>   
+          <li><a href="#"><i class='bx bxs-video'></i><p>Meeting</p></a></li>   
+          <li><a href="#"><i class='bx bxs-message-rounded-dots' ></i><p>Chat</p></a></li>   
+          <li><a href="#"><i class='bx bxs-calendar'></i><p >Calender</p></a></li>   
+      </ul>
+    </div>               
+</div>
+ <!-- search -->
+  <center>
+    <div class="search-container">
+       <i class="bx bx-search-alt search-icon" onclick="triggerSearch()"></i>
+       <input type="text" class="search-bar" id="searchInput" >
+    </div>
+ <!-- search end -->
+ </center>
+<!--banner-start-->
+<section class="banner-main-con about-page-main-banner-con">
+<div class="container">
+   <div class="banner-con about-page-banner-con text-center">
+      <div class="row wow slideInLeft">
+         <div class="col-lg-12">
+            <div class="about-page-banner-title">
+               <h1> C++ Quiz </h1>
+               <h2>C++ Pointer Test</h2>
+               <h4 class="mb-0">c++In this section there is a C++ language test in the basics. If you have studied the basics of 
+                you can now start testing yourself in the basics and your understanding of them.</h4>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</section>
+  
+  <!-- زر البدء -->
+
+  <button id="startBtn" onclick="startQuiz()">Start Quiz</button>
+   
+  <!-- الكويز -->
+  <div class="quiz-container" id="quiz">
+    <div id="question" class="question"></div>
+    <div id="options" class="options"></div>
+    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+  </div>
+
+  <!-- النتيجة -->
+  <div class="result" id="result">
+    <h3> Quiz Result</h3>
+    <div class="score-text" id="scoreText"></div>
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="feedback" id="feedback"></div>
+  </div>
+  <by><br><br><br>
+  <script>
+   const questions = [
+  { q: "What is a pointer in C++?", options: [
+    "A variable that stores value",
+    "A variable that stores address of another variable",
+    "A data type",
+    "An operator"
+  ], answer: 1 },
+
+  { q: "Which symbol is used to declare a pointer?", options: [
+    "#", "*", "&", "$"
+  ], answer: 1 },
+
+  { q: "What does '&' symbol represent in C++?", options: [
+    "Pointer declaration",
+    "Address-of operator",
+    "Multiplication",
+    "Reference to function"
+  ], answer: 1 },
+
+  { q: "What is the correct way to declare a pointer to an integer?", options: [
+    "int ptr", "int *ptr", "int &ptr", "pointer int"
+  ], answer: 1 },
+
+  { q: "What is the output of: int x = 5; int* p = &x; cout << *p; ?", options: [
+    "5", "Address of x", "Garbage", "Error"
+  ], answer: 0 },
+
+  { q: "Which operator is used to get the value pointed by a pointer?", options: [
+    "&", "*", "@", "#"
+  ], answer: 1 },
+
+  { q: "What does NULL pointer represent?", options: [
+    "Points to any memory location", "Points to address 0", "Points to garbage", "Pointer to array"
+  ], answer: 1 },
+
+  { q: "What happens if you dereference a NULL pointer?", options: [
+    "Returns 0", "Compilation error", "Runtime error / crash", "Returns random value"
+  ], answer: 2 },
+
+  { q: "What is a dangling pointer?", options: [
+    "Pointer to a constant", "Pointer not initialized", "Pointer pointing to freed memory", "Pointer to NULL"
+  ], answer: 2 },
+
+  { q: "Which function is used to allocate memory dynamically?", options: [
+    "malloc()", "new", "calloc()", "alloc()"
+  ], answer: 1 },
+
+  { q: "Which function is used to free memory allocated using new?", options: [
+    "free()", "delete", "remove()", "clear()"
+  ], answer: 1 },
+
+  { q: "What is pointer arithmetic?", options: [
+    "Arithmetic using integers", "Pointer + pointer", "Operations on pointer values", "None of the above"
+  ], answer: 2 },
+
+  { q: "Can we add two pointers in C++?", options: [
+    "Yes", "No", "Only in arrays", "Only with integers"
+  ], answer: 1 },
+
+  { q: "What is a void pointer?", options: [
+    "Pointer with no value", "Pointer that points to void", "Generic pointer", "Pointer with zero bytes"
+  ], answer: 2 },
+
+  { q: "Which of the following is used to declare a constant pointer?", options: [
+    "const *ptr", "int const *ptr", "int *const ptr", "Both B and C"
+  ], answer: 3 },
+
+  { q: "Which statement is true about pointers and arrays?", options: [
+    "They are completely unrelated", "Arrays are pointers", "Pointers can be used to access array elements", "Pointers are arrays"
+  ], answer: 2 },
+
+  { q: "What will this print? int arr[] = {10, 20}; cout << *(arr+1);", options: [
+    "10", "20", "arr", "Error"
+  ], answer: 1 },
+
+  { q: "What is the size of a pointer on a 64-bit system?", options: [
+    "4 bytes", "8 bytes", "Depends on data type", "2 bytes"
+  ], answer: 1 },
+
+  { q: "Can you have a pointer to a function in C++?", options: [
+    "Yes", "No", "Only with inline functions", "Only with static functions"
+  ], answer: 0 },
+
+  { q: "Which keyword is used with pointer to allocate array memory?", options: [
+    "malloc", "calloc", "new[]", "create[]"
+  ], answer: 2 }
+];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function startQuiz() {
+      const startBtn = document.getElementById("startBtn");
+      const quizBox = document.getElementById("quiz");
+
+      // خروج سلس
+      startBtn.classList.add("fadeOut");
+
+      setTimeout(() => {
+        startBtn.style.display = "none";
+        quizBox.style.display = "block";
+        quizBox.classList.add("fadeInZoom");
+        loadQuestion();
+      }, 500);
+    }
+
+
+    function loadQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById("question").innerHTML = `${currentQuestion + 1}: ${q.q}`;
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+      document.getElementById("nextBtn").style.display = "none";
+
+      q.options.forEach((opt, index) => {
+        const btn = document.createElement("button");
+        const spanText = document.createElement("span");
+        const spanIcon = document.createElement("span");
+
+        spanText.innerHTML = opt;
+        spanIcon.className = "icon";
+        spanIcon.textContent = "✔";
+
+        btn.appendChild(spanText);
+        btn.appendChild(spanIcon);
+        btn.onclick = () => checkAnswer(index);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selectedIndex) {
+      const q = questions[currentQuestion];
+      const buttons = document.querySelectorAll("#options button");
+
+      buttons.forEach((btn, i) => {
+        btn.classList.add("disabled");
+        const icon = btn.querySelector(".icon");
+
+        if (i === q.answer) {
+          btn.classList.add("correct");
+          icon.textContent = "✔";
+        }
+
+        if (i === selectedIndex && i !== q.answer) {
+          btn.classList.add("wrong");
+          icon.textContent = "✖";
+        }
+      });
+
+      if (selectedIndex === q.answer) score++;
+
+      if (currentQuestion < questions.length - 1) {
+        document.getElementById("nextBtn").style.display = "inline-block";
+      } else {
+        setTimeout(showFinalResult, 1000);
+      }
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      loadQuestion();
+    }
+
+    function showFinalResult() {
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("result").style.display = "block";
+
+      const percent = Math.round((score / questions.length) * 100);
+      document.getElementById("scoreText").innerText = `You scored ${score} out of ${questions.length} (${percent}%)`;
+      document.getElementById("progressBar").style.width = percent + "%";
+
+      let feedback = "";
+      if (percent === 100) feedback = " Perfect! You're an HTML master!";
+      else if (percent >= 80) feedback = " Great job! You know your stuff.";
+      else if (percent >= 50) feedback = " Not bad, keep practicing!";
+      else feedback = " Needs more study. Try again!";
+      document.getElementById("feedback").innerText = feedback;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

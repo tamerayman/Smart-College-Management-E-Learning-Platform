@@ -1,0 +1,1 @@
+ALTER TABLE scheduled_meetings ADD COLUMN IF NOT EXISTS is_started TINYINT(1) NOT NULL DEFAULT 0;

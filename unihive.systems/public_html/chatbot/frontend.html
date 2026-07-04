@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Interface</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .chat-container { border: 1px solid #ddd; border-radius: 5px; padding: 10px; height: 300px; overflow-y: auto; margin-bottom: 10px; }
+        .message { margin-bottom: 10px; padding: 8px; border-radius: 5px; }
+        .user-message { background-color: #e6f7ff; text-align: right; }
+        .bot-message { background-color: #f2f2f2; }
+        .input-container { display: flex; }
+        #messageInput { flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-right: 10px; }
+        button { padding: 8px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Chatbot Demo</h1>
+    <div class="chat-container" id="chatContainer"></div>
+    <div class="input-container">
+        <input type="text" id="messageInput" placeholder="Type your message here..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        function addMessage(message, isUser) {
+            const chatContainer = document.getElementById('chatContainer');
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.classList.add(isUser ? 'user-message' : 'bot-message');
+            messageElement.textContent = message;
+            chatContainer.appendChild(messageElement);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value.trim();
+            
+            if (!message) return;
+            
+            // Display user message
+            addMessage(message, true);
+            messageInput.value = '';
+            
+            // Send message to server
+            fetch('index.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: message,
+                    userId: 'web-user'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display bot response
+                addMessage(data.response, false);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                addMessage('Sorry, there was an error processing your request.', false);
+            });
+        }
+
+        // Allow Enter key to send messages
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

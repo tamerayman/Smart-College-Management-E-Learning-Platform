@@ -1,0 +1,196 @@
+body{
+  width: auto;
+  transition: 0.3s ease;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+button {
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 40px;
+  background: none;
+  color: white;
+  transition: 0.5s;
+}
+
+.container{
+  padding: 30px;
+  width: 85%;
+  height: 386px;
+  margin: 50px auto;
+  border-radius: 20px;
+  background-color: #ececec;
+  box-shadow: 0px 0px 10px 1px #e0e0e0;
+  box-shadow: 0px 4px 15px 1px #c2c1c1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.description{
+  width: 50%;
+  height: 100%;
+}
+
+main h1{
+  color: black;
+  margin-bottom: 40px;
+  letter-spacing: 1.5px;
+}
+
+main p{
+  color: #626161;
+  font-family: Roboto Condensed;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 38px;
+  word-spacing: 3px;
+}
+
+main span{
+  font-weight: bold;
+  font-size: 19px;
+  color: #626161;
+}
+
+.btnsContainer{
+  width: 30%;
+  height: 190px;
+}
+
+.btnsContainer button{
+  width: 180px;
+  height: 50px;
+  font-size: 19px;
+  margin: 25px 30px;
+  border-radius: 10px;
+  color: white;
+  background-color: #38618a;
+  border: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .5s ease;
+}
+
+.btnsContainer button:hover {
+  background-color: #4c749c;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.btnsContainer button:focus{
+  background-color: white;
+  color: #103054;
+  border: #F3B034 solid 3px;
+  cursor: pointer;
+}
+
+.btnsContainer i{
+  margin-left: 8px;
+  font-size: 25px;
+}
+
+.professor-upload {
+  margin-top: 20px;
+}
+
+.professor-upload button {
+  background-color: #38618a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 16px;
+  margin-right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.professor-upload button:hover {
+  background-color: #4c749c;
+  transform: scale(1.05);
+}
+
+.professor-upload i {
+  font-size: 18px;
+}
+
+main img{
+  width: 100%;
+  height: 394px;
+  padding-top: 60px;
+}
+
+/* Responsive adjustments */
+@media ((max-width:1100px)) {
+  .container{
+    width: 78%;
+    height: 430px;
+    margin: 45px auto;
+    padding-bottom: 10px;
+  }
+  
+  .description{
+    width: 55%;
+  }
+  
+  .btnsContainer button{
+    width: 160px;
+    height: 45px;
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  
+  main p{
+    font-size: 17px;
+    line-height: 34px;
+    letter-spacing: 0%;
+  }
+  
+  main img{
+    height: 350px;
+  }
+}
+
+@media ((max-width:800px)) {
+  .container{
+    width: 70%;
+    height: 430px;
+    margin: 40px auto;
+    padding-bottom: 15px;
+  }
+  
+  .description{
+    width: 55%;
+  }
+  
+  .btnsContainer button{
+    width: 135px;
+    height: 40px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .btnsContainer i{
+    font-size: 19px;
+  }
+  
+  main p{
+    font-size: 15px;
+    line-height: 28px;
+    letter-spacing: 0%;
+  }
+  
+  main img{
+    height: 300px;
+  }
+}

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>if Quiz</title>
+</head>
+<body>
+<div class="navbar">
+    <div class="navbar-left">
+       <div class="logo">
+            <img style=" width: 55px; height: 55px;" src="logo.png" alt="logo-img" class="img-fluid">
+       </div>
+       <i class="bx bx-menu menu-icon" onclick="toggleMenu()"></i>
+   </div>
+    <div class="profile">
+        <div class="notification">
+          <a href="" ><i style=" font-size: xx-large; color: #ffffff;" class='bx bxs-bell'></i></a>
+          <span class="badge">3</span>
+        </div>
+        <a href="" ><i class='bx bxs-user-circle'></i></a>
+    </div>
+    <div class="sidebar" id="sidebar">
+       <ul id="mean" class="mean" >
+          <li><a href="#"><i class='bx bxs-dashboard'></i><p>Dashbord</p></a></li>
+          <li><a href="#"><i class='bx bx-library'></i><p>Library</p></a></li>   
+          <li><a href="file:///C:/Users/%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84/Downloads/quiz/all/index2.html"><i class='bx bx-question-mark'></i>   <p>Quizzes</p> </a>       </li>   
+          <li><a href="#"><i class='bx bxs-videos' ></i><p>Courses</p>  </a></li>   
+          <li><a href="#"><i class='bx bxs-file-blank'></i><p>Sheets</p></a></li>   
+          <li><a href="#"><i class='bx bxs-video'></i><p>Meeting</p></a></li>   
+          <li><a href="#"><i class='bx bxs-message-rounded-dots' ></i><p>Chat</p></a></li>   
+          <li><a href="#"><i class='bx bxs-calendar'></i><p >Calender</p></a></li>   
+      </ul>
+    </div>               
+</div>
+ <!-- search -->
+  <center>
+    <div class="search-container">
+       <i class="bx bx-search-alt search-icon" onclick="triggerSearch()"></i>
+       <input type="text" class="search-bar" id="searchInput" >
+    </div>
+ <!-- search end -->
+ </center>
+<!--banner-start-->
+<section class="banner-main-con about-page-main-banner-con">
+<div class="container">
+   <div class="banner-con about-page-banner-con text-center">
+      <div class="row wow slideInLeft">
+         <div class="col-lg-12">
+            <div class="about-page-banner-title">
+               <h1> C++ Quiz </h1>
+               <h2>C Language Test in if</h2>
+               <h4 class="mb-0">You can challenge yourself and start with it, as this test specifically tests your level of understanding of the language in general,
+                and it is highly recommended to start with it.</h4>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</section>
+  
+  <!-- زر البدء -->
+
+  <button id="startBtn" onclick="startQuiz()">Start Quiz</button>
+   
+  <!-- الكويز -->
+  <div class="quiz-container" id="quiz">
+    <div id="question" class="question"></div>
+    <div id="options" class="options"></div>
+    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+  </div>
+
+  <!-- النتيجة -->
+  <div class="result" id="result">
+    <h3> Quiz Result</h3>
+    <div class="score-text" id="scoreText"></div>
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="feedback" id="feedback"></div>
+  </div>
+  <by><br><br><br>
+  <script>
+  const questions = [
+  { q: "What is the purpose of the if statement in C?", options: [
+    "To declare variables", "To repeat code", "To make decisions", "To create functions"
+  ], answer: 2 },
+
+  { q: "Which of these is the correct syntax for an if statement?", options: [
+    "if condition {}", "if (condition) {}", "if {condition}", "if (condition);"
+  ], answer: 1 },
+
+  { q: "What happens if the condition in if is false?", options: [
+    "The code inside runs", "The code inside is skipped", "Compiler error", "Infinite loop"
+  ], answer: 1 },
+
+  { q: "Which of these compares equality in C?", options: [
+    "=", "==", "!=", "<>"
+  ], answer: 1 },
+
+  { q: "What is the output of: if(5 > 3) printf(\"Yes\"); else printf(\"No\");", options: [
+    "Yes", "No", "Nothing", "Error"
+  ], answer: 0 },
+
+  { q: "What is the purpose of the else keyword?", options: [
+    "Defines an error", "Runs if condition is true", "Runs if condition is false", "Ends a loop"
+  ], answer: 2 },
+
+  { q: "Which of these checks if a is NOT equal to b?", options: [
+    "a =! b", "a != b", "a <> b", "a === b"
+  ], answer: 1 },
+
+  { q: "What is the result of: if(0) printf(\"Hi\");", options: [
+    "Hi", "0", "Nothing", "Error"
+  ], answer: 2 },
+
+  { q: "What is the result of: if(-1) printf(\"Hello\");", options: [
+    "Hello", "Nothing", "Error", "0"
+  ], answer: 0 },
+
+  { q: "What data type can be used in an if condition?", options: [
+    "Only int", "Only bool", "Any type with non-zero value = true", "Only char"
+  ], answer: 2 },
+
+  { q: "What is the output of: int x=10; if(x==10) printf(\"Ten\");", options: [
+    "Ten", "x", "10", "Error"
+  ], answer: 0 },
+
+  { q: "Can if statements be nested?", options: [
+    "Yes", "No", "Only in loops", "Only inside functions"
+  ], answer: 0 },
+
+  { q: "Which keyword is used to check multiple conditions?", options: [
+    "multi", "else", "switch", "else if"
+  ], answer: 3 },
+
+  { q: "What is the output: if(2 < 1) printf(\"Small\"); else printf(\"Big\");", options: [
+    "Small", "Big", "Error", "Nothing"
+  ], answer: 1 },
+
+  { q: "Which logical operator represents AND in C?", options: [
+    "&", "&&", "|", "and"
+  ], answer: 1 },
+
+  { q: "Which logical operator represents OR in C?", options: [
+    "|", "or", "||", "&&"
+  ], answer: 2 },
+
+  { q: "Which logical operator represents NOT in C?", options: [
+    "!", "not", "~", "^"
+  ], answer: 0 }
+];
+
+
+
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function startQuiz() {
+      const startBtn = document.getElementById("startBtn");
+      const quizBox = document.getElementById("quiz");
+
+      // خروج سلس
+      startBtn.classList.add("fadeOut");
+
+      setTimeout(() => {
+        startBtn.style.display = "none";
+        quizBox.style.display = "block";
+        quizBox.classList.add("fadeInZoom");
+        loadQuestion();
+      }, 500);
+    }
+
+
+    function loadQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById("question").innerHTML = `${currentQuestion + 1}: ${q.q}`;
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+      document.getElementById("nextBtn").style.display = "none";
+
+      q.options.forEach((opt, index) => {
+        const btn = document.createElement("button");
+        const spanText = document.createElement("span");
+        const spanIcon = document.createElement("span");
+
+        spanText.innerHTML = opt;
+        spanIcon.className = "icon";
+        spanIcon.textContent = "✔";
+
+        btn.appendChild(spanText);
+        btn.appendChild(spanIcon);
+        btn.onclick = () => checkAnswer(index);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selectedIndex) {
+      const q = questions[currentQuestion];
+      const buttons = document.querySelectorAll("#options button");
+
+      buttons.forEach((btn, i) => {
+        btn.classList.add("disabled");
+        const icon = btn.querySelector(".icon");
+
+        if (i === q.answer) {
+          btn.classList.add("correct");
+          icon.textContent = "✔";
+        }
+
+        if (i === selectedIndex && i !== q.answer) {
+          btn.classList.add("wrong");
+          icon.textContent = "✖";
+        }
+      });
+
+      if (selectedIndex === q.answer) score++;
+
+      if (currentQuestion < questions.length - 1) {
+        document.getElementById("nextBtn").style.display = "inline-block";
+      } else {
+        setTimeout(showFinalResult, 1000);
+      }
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      loadQuestion();
+    }
+
+    function showFinalResult() {
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("result").style.display = "block";
+
+      const percent = Math.round((score / questions.length) * 100);
+      document.getElementById("scoreText").innerText = `You scored ${score} out of ${questions.length} (${percent}%)`;
+      document.getElementById("progressBar").style.width = percent + "%";
+
+      let feedback = "";
+      if (percent === 100) feedback = " Perfect! You're an HTML master!";
+      else if (percent >= 80) feedback = " Great job! You know your stuff.";
+      else if (percent >= 50) feedback = " Not bad, keep practicing!";
+      else feedback = " Needs more study. Try again!";
+      document.getElementById("feedback").innerText = feedback;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
