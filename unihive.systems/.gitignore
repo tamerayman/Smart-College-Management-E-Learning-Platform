@@ -1,0 +1,26 @@
+# ===================================
+# SQL Database Dumps
+# ===================================
+*.sql
+
+# ===================================
+# Upload Directories (user content)
+# ===================================
+public_html/uploads/
+public_html/R2/*/uploads/
+public_html/photo/
+
+# ===================================
+# Log Files
+# ===================================
+logs/
+*.log
+
+# ===================================
+# Environment & OS Files
+# ===================================
+.env
+.env.*
+.DS_Store
+Thumbs.db
+desktop.ini
