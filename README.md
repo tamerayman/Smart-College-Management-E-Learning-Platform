@@ -1,53 +1,212 @@
 # 🎓 Smart College Management & E-Learning Platform
 
-A full-stack web application designed to digitize academic management and online learning for colleges and educational institutions. The platform integrates course management, virtual classrooms, examinations, digital resources, and student services into a single system.
+A full-stack web application designed to simplify academic management and online learning for colleges and educational institutions.
+
+The platform provides course management, virtual classrooms, online examinations, digital resources, attendance tracking, and student services within one integrated system.
+
+---
+
+## 📖 Overview
+
+Smart College Management is a graduation project that digitizes the educational process by providing a complete management platform for students, instructors, and administrators.
+
+The system combines academic management with e-learning features, allowing institutions to manage courses, conduct live lectures, organize exams, and provide educational resources through a modern web interface.
+
+---
 
 ## ✨ Features
 
-* Multi-role authentication (Admin, Instructor, Student)
-* Course and educational content management
-* Online examination and grading
-* Student attendance tracking
-* Academic calendar
-* Digital library
-* Notifications and announcements
-* Student information management
+| Module | Description |
+|---------|-------------|
+| 🔐 Authentication | Secure Login System |
+| 👨‍🏫 User Roles | Admin, Instructor & Student |
+| 📚 Course Management | Create and Manage Courses |
+| 🎥 Virtual Classroom | BigBlueButton Integration |
+| 📝 Online Exams | Exams & Automatic Grading |
+| 📅 Attendance | Student Attendance Tracking |
+| 📖 Digital Library | Educational Resources |
+| 🔔 Notifications | Announcements & Alerts |
+| 👤 Student Profile | Personal Dashboard |
+
+---
+
+# 📸 Screenshots
+
+## 🏠 Home Page
+
+![](screenshots/home.png)
+
+---
+
+## 🔐 Login
+
+![](screenshots/login.png)
+
+---
+
+## 👨‍💼 Admin Dashboard
+
+![](screenshots/admin_dashboard.png)
+
+---
+
+## 👨‍🏫 Teacher Dashboard
+
+![](screenshots/The%20Teacher's%20Board.png)
+
+---
+
+## 📚 Digital Library
+
+![](screenshots/Your%20library.png)
+
+---
+
+## 📝 Online Exams
+
+![](screenshots/Exams.png)
+
+---
 
 ## 🎥 Virtual Classroom
 
-The platform uses **BigBlueButton (BBB)** to provide live virtual classrooms and online lectures.
+![](screenshots/meeting.png)
 
-Features include:
+---
 
-* Creating and managing meetings through the **BigBlueButton REST API**
-* Secure API requests using **SHA1 checksum authentication**
-* Self-hosted BigBlueButton server integration
-* Live video conferencing
-* Screen sharing
-* Interactive whiteboard
-* Lecture recording
+## 🎥 Meeting Recording
 
-> **Note:** BigBlueButton is built on **WebRTC**. The application integrates with BigBlueButton through its REST API rather than implementing WebRTC directly.
+![](screenshots/Recording%20the%20meeting.png)
 
-##  Technologies
+---
 
-* PHP (Native)
-* MySQL
-* HTML
-* CSS
-* JavaScript
-* Bootstrap
-* BigBlueButton REST API
-* Git & GitHub
+## 🏗 System Architecture
 
-##  Getting Started
+```
+                 Users
 
-1. Clone the repository.
-2. Configure the database connection.
-3. Import the SQL database.
-4. Configure the BigBlueButton API credentials.
-5. Run the project using your local server.
+      ┌─────────┼─────────┐
+      │         │         │
 
-##  Project Status
+   Admin   Instructor   Student
 
-Completed as a graduation project.
+      │         │         │
+      └─────────┼─────────┘
+                │
+
+      Smart College Platform
+
+     Authentication
+     Course Management
+     Virtual Classroom
+     Online Exams
+     Digital Library
+     Attendance
+     Notifications
+
+                │
+
+          MySQL Database
+
+                │
+
+       BigBlueButton Server
+```
+
+---
+
+## 🎥 Virtual Classroom
+
+The platform integrates with **BigBlueButton (BBB)** to provide live online classes.
+
+### Features
+
+- Live Video Meetings
+- Screen Sharing
+- Interactive Whiteboard
+- Lecture Recording
+- REST API Integration
+- SHA1 Checksum Authentication
+- Self-hosted BigBlueButton Server
+
+> **Note:** The platform communicates with BigBlueButton through its REST API.
+
+---
+
+## ⚙ Technologies
+
+- PHP
+- MySQL
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap
+- BigBlueButton REST API
+- Git
+- GitHub
+
+---
+
+## 🚀 Installation
+
+```bash
+git clone https://github.com/tamerayman/Smart-College-Management-E-Learning-Platform.git
+```
+
+Configure:
+
+- Database
+- Apache/XAMPP
+- BigBlueButton API Credentials
+
+Import the SQL database and run the project.
+
+---
+
+## 📂 Project Structure
+
+```
+app/
+
+controllers/
+
+models/
+
+views/
+
+config/
+
+assets/
+
+uploads/
+
+database/
+
+screenshots/
+```
+
+---
+
+## 📈 Project Status
+
+| Module | Status |
+|---------|---------|
+| Authentication | ✅ Completed |
+| Course Management | ✅ Completed |
+| Virtual Classroom | ✅ Completed |
+| Online Exams | ✅ Completed |
+| Attendance | ✅ Completed |
+| Digital Library | ✅ Completed |
+| Student Management | ✅ Completed |
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+# 👨‍💻 Developed by
+
+**Tamer Ayman**
