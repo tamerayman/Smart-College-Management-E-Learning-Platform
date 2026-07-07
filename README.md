@@ -135,15 +135,29 @@ The platform integrates with **BigBlueButton (BBB)** to provide live online clas
 
 ## ⚙ Technologies
 
-- PHP
-- MySQL
-- HTML5
-- CSS3
-- JavaScript
-- Bootstrap
-- BigBlueButton REST API
-- Git
-- GitHub
+Backend
+
+• PHP
+
+Database
+
+• MySQL
+
+Frontend
+
+• HTML
+• CSS
+• JavaScript
+• Bootstrap
+
+Integration
+
+• BigBlueButton REST API
+
+Tools
+
+• Git
+• GitHub
 
 ---
 
